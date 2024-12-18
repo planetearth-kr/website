@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 
 export default function PlanetEarthWebsite() {
   return (
@@ -34,12 +33,11 @@ export default function PlanetEarthWebsite() {
       </nav>
       <section className="relative h-[70vh] flex items-center">
         <Image
-          src="/background.png"
+          src="/background.webp"
           alt="PlanetEarth Preview"
           fill
-          className="object-cover"
-          quality={100}
           priority
+          className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-transparent"></div>
         <div className="relative z-10 text-white container mx-auto px-4">
@@ -50,12 +48,9 @@ export default function PlanetEarthWebsite() {
             <p className="text-xl md:text-2xl mb-8">
               오픈월드 타우니 지구서버 PlanetEarth
             </p>
-            <Button
-              size="lg"
-              className="text-lg px-6 py-6 bg-green-500 hover:bg-green-600"
-            >
+            <button className="text-lg px-6 py-3 bg-green-500 hover:bg-green-600 rounded-lg font-semibold transition-colors duration-300 text-white">
               IP: planetearth.kr
-            </Button>
+            </button>
           </div>
         </div>
       </section>
@@ -90,7 +85,7 @@ export default function PlanetEarthWebsite() {
                 className="relative aspect-video rounded-lg overflow-hidden shadow-lg"
               >
                 <Image
-                  src={`/screenshot-${index + 1}.png`}
+                  src={`/screenshot-${index + 1}.webp`}
                   alt={`In-Game screenshot ${index + 1}`}
                   fill
                   className="object-cover"
@@ -102,20 +97,13 @@ export default function PlanetEarthWebsite() {
         </div>
       </section>
       <footer className="bg-white py-6 border-t border-gray-200">
-        <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-4 md:mb-0">
-            <p className="text-gray-500 text-sm">
-              2022-{new Date().getFullYear()} planetearth.kr. All rights reserved.
-            </p>
-          </div>
-          <div className="text-center md:text-right">
-            <p className="text-gray-500 text-sm">
-              <span>
-                PlanetEarth is not affiliated with Mojang or Microsoft
-              </span>
-              <span className="mx-2"></span>
-              <span>Help: contact@planetearth.kr</span>
-            </p>
+        <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+          <p className="text-gray-500 text-sm">
+            2022-{new Date().getFullYear()} planetearth.kr. All rights reserved.
+          </p>
+          <div className="text-gray-500 text-sm space-x-4">
+            <span>PlanetEarth is not affiliated with Mojang or Microsoft.</span>
+            <span>Help: contact@planetearth.kr</span>
           </div>
         </div>
       </footer>
