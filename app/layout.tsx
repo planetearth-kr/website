@@ -18,9 +18,6 @@ export const metadata: Metadata = {
   keywords: '마인크래프트, Minecraft, PlanetEarth, 타우니, 국전, 국가전쟁, 지구맛, 시즈워, 플어, 플래닛어스',
   icons: {
     icon: '/favicon.png'
-  },
-  verification: {
-    naver: 'f09cea475afda676cb12b8a165d2de720bbc6da9',
   }
 };
 
@@ -31,6 +28,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
+      <head>
+        <meta name="naver-site-verification" content="f09cea475afda676cb12b8a165d2de720bbc6da9" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
