@@ -61,7 +61,7 @@ export default function PlanetEarthWebsite() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { number: "31,000+", label: "누적 접속" },
+              { number: "32,000+", label: "누적 접속" },
               { number: "11,000+", label: "디스코드 멤버" },
               { number: "437", label: "최고 동시 접속" },
               { number: "350+", label: "마을" },
