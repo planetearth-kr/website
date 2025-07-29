@@ -42,9 +42,9 @@ export default function PlanetEarthWebsite() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-transparent"></div>
         <div className="relative z-10 text-white container mx-auto px-4">
           <div className="max-w-2xl">
-            <div className="inline-block bg-red-600 text-white text-sm font-semibold px-3 py-1 rounded-full mb-3">
+            {/*<div className="inline-block bg-red-600 text-white text-sm font-semibold px-3 py-1 rounded-full mb-3">
               ✨ 1,000일 돌파!
-            </div>
+            </div>*/}
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-5 leading-tight">
               게임 속, 또 하나의 지구
             </h1>
@@ -62,7 +62,7 @@ export default function PlanetEarthWebsite() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
               { number: "32,000+", label: "누적 접속" },
-              { number: "11,000+", label: "디스코드 멤버" },
+              { number: "12,000+", label: "디스코드 멤버" },
               { number: "437", label: "최고 동시 접속" },
               { number: "350+", label: "마을" },
             ].map((stat, index) => (
