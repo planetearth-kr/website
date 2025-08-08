@@ -10,6 +10,9 @@ export default function PlanetEarthWebsite() {
             PlanetEarth
           </Link>
           <div className="space-x-4">
+            <Link href="/staff" className="hover:text-gray-300">
+              운영진
+            </Link>
             <Link
               href="https://discord.com/invite/PlanetEarth"
               className="hover:text-gray-300"
