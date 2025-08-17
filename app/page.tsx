@@ -64,10 +64,10 @@ export default function PlanetEarthWebsite() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { number: "32,000+", label: "누적 접속" },
+              { number: "33,000+", label: "누적 접속" },
               { number: "12,000+", label: "디스코드 멤버" },
-              { number: "437", label: "최고 동시 접속" },
-              { number: "350+", label: "마을" },
+              { number: "462", label: "최고 동시 접속" },
+              { number: "370+", label: "마을" },
             ].map((stat, index) => (
               <div key={index} className="text-center relative">
                 <h2 className="text-5xl md:text-6xl font-bold text-blue-600 mb-2">
