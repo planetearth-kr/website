@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   description: "오픈월드 타우니 지구서버 PlanetEarth",
   keywords: '마인크래프트, Minecraft, PlanetEarth, 타우니, 국전, 국가전쟁, 지구맛, 시즈워, 플어, 플래닛어스',
   icons: {
-    icon: '/favicon.png'
+    icon: "/favicon.ico",
   },
   openGraph: {
     type: 'website',
