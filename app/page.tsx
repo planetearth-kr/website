@@ -66,7 +66,7 @@ export default function PlanetEarthWebsite() {
             {[
               { number: "35,000+", label: "누적 접속" },
               { number: "13,000+", label: "디스코드 멤버" },
-              { number: "482", label: "최고 동시 접속" },
+              { number: "486", label: "최고 동시 접속" },
               { number: "370+", label: "마을" },
             ].map((stat, index) => (
               <div key={index} className="text-center relative">
