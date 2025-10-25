@@ -51,7 +51,7 @@ const staffData: Record<string, Staff[]> = {
     {
       id: "irochi_",
       name: "Irochi",
-      description: "Pitter Rainy sky Patter Shiny smile\nThere might be a rainbow in the sky.",
+      description: "Play the lead with all your life,\nand may devotion never fade",
       links: [
         { type: "discord", url: "https://discord.com/users/1086117494189723658", label: "irochi" },
         { type: "github", url: "https://github.com/irochi-moe", label: "GitHub" },
