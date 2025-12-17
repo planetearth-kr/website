@@ -20,7 +20,7 @@ export default function PlanetEarthWebsite() {
               디스코드
             </Link>
             <Link
-              href="https://docs.planetearth.kr"
+              href="https://guide.planetearth.kr"
               className="hover:text-gray-300"
             >
               가이드
