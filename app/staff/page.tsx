@@ -107,7 +107,7 @@ export default function StaffPage() {
           <div className="space-x-4">
             <Link href="/staff" className="hover:text-gray-300">운영진</Link>
             <Link href="https://discord.com/invite/PlanetEarth" className="hover:text-gray-300">디스코드</Link>
-            <Link href="https://guide.planetearth.kr" className="hover:text-gray-300">가이드</Link>
+            <Link href="https://planetearth.kr/guide" className="hover:text-gray-300">가이드</Link>
             <Link href="https://map.planetearth.kr" className="hover:text-gray-300">지도</Link>
           </div>
         </div>
