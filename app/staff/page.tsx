@@ -41,14 +41,6 @@ const staffData: Record<string, Staff[]> = {
   ],
   Developer: [
     {
-      id: "yellim",
-      name: "Yellim",
-      links: [
-        { type: "discord", url: "https://discord.com/users/596201576327282699", label: "yellim" }
-      ],
-      badge: { text: "컨텐츠 개발", color: "bg-blue-600" },
-    },
-    {
       id: "irochi_",
       name: "Irochi",
       description: "Play the lead with all your life,\nand may devotion never fade",
@@ -59,18 +51,46 @@ const staffData: Record<string, Staff[]> = {
       ],
       badge: { text: "백엔드 개발", color: "bg-indigo-500" },
     },
+    {
+      id: "yellim",
+      name: "Yellim",
+      links: [
+        { type: "discord", url: "https://discord.com/users/596201576327282699", label: "yellim" }
+      ],
+      badge: { text: "활동중단", color: "bg-gray-500" },
+    },
   ],
-  Moderator: [
-    { id: "turtlefisherman", name: "TurtleFisherman", links: [{ type: "discord", url: "https://discord.com/users/453470747130724363", label: "1023_hd" }] },
-    { id: "squirrel", name: "Squirrel", links: [{ type: "discord", url: "https://discord.com/users/268772304375382016", label: "squirrel1202" }] },
-    { id: "matles_", name: "Matles_", links: [{ type: "discord", url: "https://discord.com/users/376282963781877770", label: "byeol._.ha" }] },
-    { id: "aceda8", name: "aceda8", links: [{ type: "discord", url: "https://discord.com/users/589405416447016960", label: "aceda8" }] },
-    { id: "i_loveryo", name: "I_loveryo", links: [{ type: "discord", url: "https://discord.com/users/328504741711839233", label: "fo1ver" }] },
-    { id: "royang_", name: "Royang_", links: [{ type: "discord", url: "https://discord.com/users/1128999881801990265", label: "no.l2" }] },
-    { id: "townyapi", name: "TownyAPI", links: [{ type: "discord", url: "https://discord.com/users/244889376025346049", label: "xdgf0" }] },
-  ],
+    Moderator: [
+      { id: "turtlefisherman", name: "TurtleFisherman", links: [{ type: "discord", url: "https://discord.com/users/453470747130724363", label: "1023_hd" }] },
+      { id: "townyapi", name: "TownyAPI", links: [{ type: "discord", url: "https://discord.com/users/244889376025346049", label: "xdgf0" }] },
+      {
+        id: "maltese_",
+        name: "Maltese_",
+        links: [{ type: "discord", url: "https://discord.com/users/376282963781877770", label: "byeol._.ha" }],
+        badge: { text: "활동중단", color: "bg-gray-500" },
+      },
+      {
+        id: "aceda8",
+        name: "aceda8",
+        links: [{ type: "discord", url: "https://discord.com/users/589405416447016960", label: "aceda8" }],
+        badge: { text: "활동중단", color: "bg-gray-500" },
+      },
+      {
+        id: "i_loveryo",
+        name: "I_loveryo",
+        links: [{ type: "discord", url: "https://discord.com/users/328504741711839233", label: "fo1ver" }],
+        badge: { text: "활동중단", color: "bg-gray-500" },
+      },
+      {
+        id: "royang_",
+        name: "Royang_",
+        links: [{ type: "discord", url: "https://discord.com/users/1128999881801990265", label: "no.l2" }],
+        badge: { text: "활동중단", color: "bg-gray-500" },
+      },
+    ],
   Designer: [
     { id: "cokuun", name: "CoKuun", links: [{ type: "discord", url: "https://discord.com/users/387188588628017152", label: "cokuun" }] },
+    { id: "squirrel", name: "Squirrel", links: [{ type: "discord", url: "https://discord.com/users/268772304375382016", label: "squirrel1202" }] },
   ],
 };
 
