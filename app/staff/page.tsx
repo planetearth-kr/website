@@ -63,12 +63,8 @@ const staffData: Record<string, Staff[]> = {
   Moderator: [
     { id: "turtlefisherman", name: "TurtleFisherman", links: [{ type: "discord", url: "https://discord.com/users/453470747130724363", label: "1023_hd" }] },
     { id: "townyapi", name: "TownyAPI", links: [{ type: "discord", url: "https://discord.com/users/244889376025346049", label: "xdgf0" }] },
-    {
-      id: "maltese_",
-      name: "Maltese_",
-      links: [{ type: "discord", url: "https://discord.com/users/376282963781877770", label: "byeol._.ha" }],
-      badge: { text: "활동중단", color: "bg-gray-500" },
-    },
+    { id: "i_loveryo", name: "I_loveryo", links: [{ type: "discord", url: "https://discord.com/users/328504741711839233", label: "fo1ver" }] },
+    { id: "ma5o", name: "MA5O", links: [{ type: "discord", url: "https://discord.com/users/840784325834571827", label: "m_ss0" }] },
     {
       id: "aceda8",
       name: "aceda8",
@@ -76,9 +72,9 @@ const staffData: Record<string, Staff[]> = {
       badge: { text: "활동중단", color: "bg-gray-500" },
     },
     {
-      id: "i_loveryo",
-      name: "I_loveryo",
-      links: [{ type: "discord", url: "https://discord.com/users/328504741711839233", label: "fo1ver" }],
+      id: "maltese_",
+      name: "Maltese_",
+      links: [{ type: "discord", url: "https://discord.com/users/376282963781877770", label: "byeol._.ha" }],
       badge: { text: "활동중단", color: "bg-gray-500" },
     },
     {
