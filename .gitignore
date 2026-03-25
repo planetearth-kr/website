@@ -86,3 +86,6 @@ public/sitemap.xml
 public/sitemap-0.xml
 public/robots.txt
 package-lock.json
+
+# opennext
+.open-next
