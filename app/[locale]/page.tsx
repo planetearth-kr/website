@@ -44,7 +44,7 @@ function HomeContent() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { number: "41,000+", label: t("stats.totalPlayers") },
+              { number: "42,000+", label: t("stats.totalPlayers") },
               { number: "16,000+", label: t("stats.discordMembers") },
               { number: "533", label: t("stats.peakPlayers") },
               { number: "370+", label: t("stats.towns") },
