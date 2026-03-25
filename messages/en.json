@@ -1,0 +1,41 @@
+{
+  "nav": {
+    "staff": "Staff",
+    "discord": "Discord",
+    "guide": "Guide",
+    "map": "Map"
+  },
+  "home": {
+    "title": "Another Earth, In Your Game",
+    "subtitle": "Open World Towny Earth Server — PlanetEarth",
+    "backgroundAlt": "PlanetEarth Preview",
+    "screenshotAlt": "In-game screenshot {number}",
+    "stats": {
+      "totalPlayers": "Total Players",
+      "discordMembers": "Discord Members",
+      "peakPlayers": "Peak Players",
+      "towns": "Towns"
+    }
+  },
+  "staff": {
+    "title": "Meet the Staff",
+    "subtitle": "The people who build PlanetEarth together",
+    "memberCount": "{count} members",
+    "skinAlt": "{name} Minecraft Skin",
+    "backgroundAlt": "PlanetEarth Preview"
+  },
+  "badges": {
+    "manager": "Manager",
+    "backendDev": "Backend Dev",
+    "inactive": "Inactive"
+  },
+  "footer": {
+    "disclaimer": "PlanetEarth is not affiliated with Mojang or Microsoft.",
+    "help": "Help: contact@planetearth.kr"
+  },
+  "meta": {
+    "title": "PlanetEarth",
+    "description": "Open World Towny Earth Server — PlanetEarth",
+    "keywords": "Minecraft, PlanetEarth, Towny, Earth Server, open world, geopolitical"
+  }
+}

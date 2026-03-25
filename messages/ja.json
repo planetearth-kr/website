@@ -1,0 +1,41 @@
+{
+  "nav": {
+    "staff": "スタッフ",
+    "discord": "Discord",
+    "guide": "ガイド",
+    "map": "マップ"
+  },
+  "home": {
+    "title": "ゲームの中の、もう一つの地球",
+    "subtitle": "オープンワールド タウニー 地球サーバー PlanetEarth",
+    "backgroundAlt": "PlanetEarth プレビュー",
+    "screenshotAlt": "ゲーム内スクリーンショット {number}",
+    "stats": {
+      "totalPlayers": "累計プレイヤー",
+      "discordMembers": "Discordメンバー",
+      "peakPlayers": "最高同時接続",
+      "towns": "町数"
+    }
+  },
+  "staff": {
+    "title": "スタッフ紹介",
+    "subtitle": "PlanetEarthを一緒に作り上げる人々",
+    "memberCount": "{count}名",
+    "skinAlt": "{name} マインクラフトスキン",
+    "backgroundAlt": "PlanetEarth プレビュー"
+  },
+  "badges": {
+    "manager": "総括",
+    "backendDev": "バックエンド開発",
+    "inactive": "活動休止"
+  },
+  "footer": {
+    "disclaimer": "PlanetEarth is not affiliated with Mojang or Microsoft.",
+    "help": "Help: contact@planetearth.kr"
+  },
+  "meta": {
+    "title": "PlanetEarth",
+    "description": "オープンワールド タウニー 地球サーバー PlanetEarth",
+    "keywords": "マインクラフト, Minecraft, PlanetEarth, タウニー, 地球サーバー, オープンワールド"
+  }
+}

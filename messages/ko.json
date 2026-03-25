@@ -1,0 +1,41 @@
+{
+  "nav": {
+    "staff": "운영진",
+    "discord": "디스코드",
+    "guide": "가이드",
+    "map": "지도"
+  },
+  "home": {
+    "title": "게임 속, 또 하나의 지구",
+    "subtitle": "오픈월드 타우니 지구서버 PlanetEarth",
+    "backgroundAlt": "PlanetEarth 미리보기",
+    "screenshotAlt": "인게임 스크린샷 {number}",
+    "stats": {
+      "totalPlayers": "누적 접속",
+      "discordMembers": "디스코드 멤버",
+      "peakPlayers": "최고 동시 접속",
+      "towns": "마을"
+    }
+  },
+  "staff": {
+    "title": "운영진 소개",
+    "subtitle": "PlanetEarth를 함께 만들어가는 사람들",
+    "memberCount": "{count}명",
+    "skinAlt": "{name} 마인크래프트 스킨",
+    "backgroundAlt": "PlanetEarth 미리보기"
+  },
+  "badges": {
+    "manager": "총괄",
+    "backendDev": "백엔드 개발",
+    "inactive": "활동중단"
+  },
+  "footer": {
+    "disclaimer": "PlanetEarth is not affiliated with Mojang or Microsoft.",
+    "help": "Help: contact@planetearth.kr"
+  },
+  "meta": {
+    "title": "PlanetEarth",
+    "description": "오픈월드 타우니 지구서버 PlanetEarth",
+    "keywords": "마인크래프트, Minecraft, PlanetEarth, 타우니, 국전, 국가전쟁, 지구맛, 시즈워, 플어, 플래닛어스"
+  }
+}
