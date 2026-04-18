@@ -56,7 +56,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "minotar.net",
+        hostname: "api.mcheads.org",
         port: "",
         pathname: "/**",
       },

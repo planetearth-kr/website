@@ -257,7 +257,7 @@ function StaffContent() {
         <div className="flex items-start gap-4">
           <div className="w-16 h-16 rounded-lg overflow-hidden shadow-sm flex-shrink-0 bg-gray-100">
             <Image
-              src={`https://minotar.net/helm/${staff.id}/64.png`}
+              src={`https://api.mcheads.org/head/${staff.id}/64`}
               alt={t("skinAlt", { name: staff.name })}
               width={64}
               height={64}
