@@ -53,7 +53,7 @@ const staffData: Record<string, Staff[]> = {
       id: "irochi_",
       name: "Irochi",
       description:
-        "Play the lead with all your life,\nand may devotion never fade",
+        "Life leaves more than a few scratches.\nWhy do we still seek hope as we fall apart?",
       links: [
         {
           type: "discord",
@@ -280,9 +280,9 @@ function StaffContent() {
             </div>
             {staff.links && (
               <div className="flex gap-2">
-                {staff.links.map((link, index) => (
+                {staff.links.map((link) => (
                   <a
-                    key={index}
+                    key={link.url}
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -297,7 +297,7 @@ function StaffContent() {
           </div>
         </div>
         {staff.description && (
-          <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+          <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
             <div className="bg-gray-800 text-white text-sm rounded-lg px-3 py-2 shadow-lg max-w-xs w-max">
               <div className="text-center leading-relaxed whitespace-pre-line">
                 {staff.description}

@@ -38,6 +38,8 @@ function LanguageSwitcher() {
     <div ref={ref} className="relative">
       <button
         onClick={() => setOpen((v) => !v)}
+        aria-label="Language"
+        aria-expanded={open}
         className="flex items-center gap-1 px-2 py-1 rounded hover:bg-white/20 transition-colors text-sm font-medium"
       >
         <svg
@@ -89,7 +91,7 @@ export function Navigation() {
 
   const navLinks = [
     { href: "/staff" as const, label: t("staff"), internal: true },
-    { href: "https://discord.com/invite/PlanetEarth", label: t("discord"), internal: false },
+    { href: "https://discord.com/invite/planetearth", label: t("discord"), internal: false },
     { href: "https://planetearth.kr/guide", label: t("guide"), internal: false },
     { href: "https://map.planetearth.kr", label: t("map"), internal: false },
   ];
@@ -173,7 +175,7 @@ export function Footer() {
     <footer className="bg-white py-6 border-t border-gray-200">
       <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-3 md:gap-0 text-gray-500 text-sm">
         <p>
-          {new Date().getFullYear()} 플래닛네트워크 All rights reserved.
+          Copyright 2022-{new Date().getFullYear()} 플래닛네트워크. All rights reserved.
         </p>
         <div className="flex flex-col md:flex-row items-center gap-1 md:gap-4 text-center">
           <span>{t("disclaimer")}</span>
