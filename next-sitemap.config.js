@@ -7,5 +7,6 @@ module.exports = {
     { href: "https://planetearth.kr/ko", hreflang: "ko" },
     { href: "https://planetearth.kr/en", hreflang: "en" },
     { href: "https://planetearth.kr/ja", hreflang: "ja" },
+    { href: "https://planetearth.kr/ko", hreflang: "x-default" },
   ],
 };

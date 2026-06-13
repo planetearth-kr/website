@@ -33,6 +33,11 @@
     "disclaimer": "PlanetEarth is not affiliated with Mojang or Microsoft.",
     "help": "Help: contact@planetearth.kr"
   },
+  "notFound": {
+    "title": "ページが見つかりません",
+    "description": "お探しのページは存在しないか、移動された可能性があります。",
+    "home": "ホームに戻る"
+  },
   "meta": {
     "title": "PlanetEarth",
     "description": "オープンワールド タウニー 地球サーバー PlanetEarth",

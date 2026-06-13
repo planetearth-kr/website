@@ -7,11 +7,25 @@ const IP = "planetearth.kr";
 export default function CopyIPButton() {
   const [copied, setCopied] = useState(false);
 
-  function handleCopy() {
-    navigator.clipboard.writeText(IP).then(() => {
+  async function handleCopy() {
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(IP);
+      } else {
+        const textarea = document.createElement("textarea");
+        textarea.value = IP;
+        textarea.style.position = "fixed";
+        textarea.style.opacity = "0";
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textarea);
+      }
       setCopied(true);
       setTimeout(() => setCopied(false), 3000);
-    }).catch(() => {});
+    } catch {
+      // Copy failed (e.g. permission denied); leave the button state unchanged.
+    }
   }
 
   return (

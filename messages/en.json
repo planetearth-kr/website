@@ -20,7 +20,7 @@
   "staff": {
     "title": "Meet the Staff",
     "subtitle": "The people who build PlanetEarth together",
-    "memberCount": "{count} members",
+    "memberCount": "{count, plural, one {# member} other {# members}}",
     "skinAlt": "{name} Minecraft Skin",
     "backgroundAlt": "PlanetEarth Preview"
   },
@@ -32,6 +32,11 @@
   "footer": {
     "disclaimer": "PlanetEarth is not affiliated with Mojang or Microsoft.",
     "help": "Help: contact@planetearth.kr"
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "description": "The page you're looking for doesn't exist or has been moved.",
+    "home": "Back to Home"
   },
   "meta": {
     "title": "PlanetEarth",

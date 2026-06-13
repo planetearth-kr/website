@@ -53,14 +53,7 @@ const nextConfig: NextConfig = {
     ];
   },
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "api.mcheads.org",
-        port: "",
-        pathname: "/**",
-      },
-    ],
+    unoptimized: true,
   },
 };
 

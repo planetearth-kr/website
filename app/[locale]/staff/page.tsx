@@ -1,16 +1,19 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
-import { FaYoutube, FaGithub, FaDiscord } from "react-icons/fa";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import type { Metadata } from "next";
+import { FaGithub, FaDiscord } from "react-icons/fa";
 import { FiExternalLink, FiShield, FiCode, FiUsers } from "react-icons/fi";
 import { MdPalette } from "react-icons/md";
-import { Navigation, Footer } from "@/components/Layout";
+import { Navigation } from "@/components/Layout";
+import { Footer } from "@/components/Footer";
+import { routing, ogLocales } from "@/i18n/routing";
 
 type Staff = {
   id: string;
   name: string;
   links?: {
-    type: "youtube" | "github" | "discord" | "other";
+    type: "github" | "discord" | "other";
     url: string;
     label?: string;
   }[];
@@ -203,10 +206,6 @@ const categoryInfo = {
 } as const;
 
 const iconMap = {
-  youtube: {
-    component: FaYoutube,
-    color: "text-red-500 hover:text-red-600",
-  },
   github: {
     component: FaGithub,
     color: "text-gray-700 hover:text-gray-800",
@@ -236,6 +235,37 @@ const featuredCategories = ["Admin", "Developer"] as const;
 type Props = {
   params: Promise<{ locale: string }>;
 };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "staff" });
+
+  return {
+    title: t("title"),
+    description: t("subtitle"),
+    alternates: {
+      canonical: `/${locale}/staff`,
+      languages: {
+        ...Object.fromEntries(routing.locales.map((l) => [l, `/${l}/staff`])),
+        "x-default": `/${routing.defaultLocale}/staff`,
+      },
+    },
+    openGraph: {
+      type: "website",
+      title: t("title"),
+      description: t("subtitle"),
+      url: `/${locale}/staff`,
+      locale: ogLocales[locale],
+      images: ["/background.webp"],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("title"),
+      description: t("subtitle"),
+      images: ["/background.webp"],
+    },
+  };
+}
 
 export default async function StaffPage({ params }: Props) {
   const { locale } = await params;
@@ -346,7 +376,6 @@ function StaffContent() {
           src="/background.webp"
           alt={t("backgroundAlt")}
           fill
-          sizes="100vw"
           priority
           className="object-cover object-[50%_25%]"
         />

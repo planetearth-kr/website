@@ -23,8 +23,15 @@ function LanguageSwitcher() {
         setOpen(false);
       }
     }
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") setOpen(false);
+    }
     document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
   }, []);
 
   function switchLocale(nextLocale: string) {
@@ -91,9 +98,9 @@ export function Navigation() {
 
   const navLinks = [
     { href: "/staff" as const, label: t("staff"), internal: true },
-    { href: "https://discord.com/invite/planetearth", label: t("discord"), internal: false },
-    { href: "https://planetearth.kr/guide", label: t("guide"), internal: false },
-    { href: "https://map.planetearth.kr", label: t("map"), internal: false },
+    { href: "/discord", label: t("discord"), internal: false },
+    { href: "/guide", label: t("guide"), internal: false },
+    { href: "/map", label: t("map"), internal: false },
   ];
 
   return (
@@ -126,6 +133,7 @@ export function Navigation() {
             onClick={() => setMenuOpen((v) => !v)}
             className="p-2 rounded hover:bg-white/20 transition-colors"
             aria-label="Menu"
+            aria-expanded={menuOpen}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {menuOpen ? (
@@ -165,23 +173,5 @@ export function Navigation() {
         </div>
       )}
     </nav>
-  );
-}
-
-export function Footer() {
-  const t = useTranslations("footer");
-
-  return (
-    <footer className="bg-white py-6 border-t border-gray-200">
-      <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-3 md:gap-0 text-gray-500 text-sm">
-        <p>
-          Copyright 2022-{new Date().getFullYear()} 플래닛네트워크. All rights reserved.
-        </p>
-        <div className="flex flex-col md:flex-row items-center gap-1 md:gap-4 text-center">
-          <span>{t("disclaimer")}</span>
-          <span>{t("help")}</span>
-        </div>
-      </div>
-    </footer>
   );
 }
