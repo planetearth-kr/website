@@ -3,11 +3,14 @@
     "staff": "운영진",
     "discord": "디스코드",
     "guide": "가이드",
-    "map": "지도"
+    "map": "지도",
+    "language": "언어 선택",
+    "menu": "메뉴"
   },
   "home": {
     "title": "게임 속, 또 하나의 지구",
     "subtitle": "오픈월드 타우니 지구서버 PlanetEarth",
+    "copied": "서버 주소가 복사되었습니다",
     "backgroundAlt": "PlanetEarth 미리보기",
     "screenshotAlt": "인게임 스크린샷 {number}",
     "stats": {

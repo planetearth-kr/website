@@ -4,6 +4,15 @@ import { Navigation } from "@/components/Layout";
 import { Footer } from "@/components/Footer";
 import CopyIPButton from "@/components/CopyIPButton";
 
+const screenshots = [
+  "/screenshot-1.webp",
+  "/screenshot-2.webp",
+  "/screenshot-3.webp",
+  "/screenshot-4.webp",
+  "/screenshot-5.webp",
+  "/screenshot-6.webp",
+];
+
 export default function HomeContent() {
   const t = useTranslations("home");
 
@@ -20,7 +29,7 @@ export default function HomeContent() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-transparent"></div>
         <div className="relative z-10 text-white container mx-auto px-4">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-5 leading-tight md:whitespace-nowrap">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-5 leading-tight text-balance break-keep">
             {t("title")}
           </h1>
           <p className="text-xl md:text-2xl mb-8 max-w-2xl">{t("subtitle")}</p>
@@ -52,17 +61,16 @@ export default function HomeContent() {
       <section className="pb-16">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[...Array(6)].map((_, index) => (
+            {screenshots.map((src, index) => (
               <div
-                key={index}
+                key={src}
                 className="relative aspect-video rounded-lg overflow-hidden shadow-lg"
               >
                 <Image
-                  src={`/screenshot-${index + 1}.webp`}
+                  src={src}
                   alt={t("screenshotAlt", { number: index + 1 })}
                   fill
                   className="object-cover"
-                  loading="lazy"
                 />
               </div>
             ))}

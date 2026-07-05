@@ -1,23 +1,23 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, type RefObject } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { Link, useRouter, usePathname, routing } from "@/i18n/routing";
+import {
+  Link,
+  useRouter,
+  usePathname,
+  routing,
+  localeLabels,
+  type Locale,
+} from "@/i18n/routing";
 
-const localeLabels: Record<string, string> = {
-  ko: "KO",
-  en: "EN",
-  ja: "JA",
-};
-
-function LanguageSwitcher() {
-  const locale = useLocale();
-  const router = useRouter();
-  const pathname = usePathname();
-  const [open, setOpen] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
+function useDismiss(
+  ref: RefObject<HTMLElement | null>,
+  open: boolean,
+  setOpen: (open: boolean) => void
+) {
   useEffect(() => {
+    if (!open) return;
     function handleClickOutside(e: MouseEvent) {
       if (ref.current && !ref.current.contains(e.target as Node)) {
         setOpen(false);
@@ -32,20 +32,50 @@ function LanguageSwitcher() {
       document.removeEventListener("mousedown", handleClickOutside);
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, []);
+  }, [ref, open, setOpen]);
+}
 
-  function switchLocale(nextLocale: string) {
+type NavItem = { href: string; label: string; internal: boolean };
+
+function NavLink({
+  item,
+  className,
+  onClick,
+}: {
+  item: NavItem;
+  className: string;
+  onClick?: () => void;
+}) {
+  return item.internal ? (
+    <Link href={item.href} className={className} onClick={onClick}>
+      {item.label}
+    </Link>
+  ) : (
+    <a href={item.href} className={className} onClick={onClick}>
+      {item.label}
+    </a>
+  );
+}
+
+function LanguageSwitcher() {
+  const t = useTranslations("nav");
+  const locale = useLocale() as Locale;
+  const router = useRouter();
+  const pathname = usePathname();
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  useDismiss(ref, open, setOpen);
+
+  function switchLocale(nextLocale: Locale) {
     setOpen(false);
-    router.replace(pathname, {
-      locale: nextLocale as (typeof routing.locales)[number],
-    });
+    router.replace(pathname, { locale: nextLocale });
   }
 
   return (
     <div ref={ref} className="relative">
       <button
         onClick={() => setOpen((v) => !v)}
-        aria-label="Language"
+        aria-label={t("language")}
         aria-expanded={open}
         className="flex items-center gap-1 px-2 py-1 rounded hover:bg-white/20 transition-colors text-sm font-medium"
       >
@@ -95,44 +125,39 @@ function LanguageSwitcher() {
 export function Navigation() {
   const t = useTranslations("nav");
   const [menuOpen, setMenuOpen] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
+  useDismiss(navRef, menuOpen, setMenuOpen);
 
-  const navLinks = [
-    { href: "/staff" as const, label: t("staff"), internal: true },
+  const navLinks: NavItem[] = [
+    { href: "/staff", label: t("staff"), internal: true },
     { href: "/discord", label: t("discord"), internal: false },
     { href: "/guide", label: t("guide"), internal: false },
     { href: "/map", label: t("map"), internal: false },
   ];
 
   return (
-    <nav className="absolute top-0 left-0 right-0 z-50 text-white py-4">
+    <nav
+      ref={navRef}
+      className="absolute top-0 left-0 right-0 z-50 text-white py-4"
+    >
       <div className="container mx-auto px-4 flex justify-between items-center">
         <Link href="/" className="text-2xl font-bold">
           PlanetEarth
         </Link>
 
-        {/* Desktop */}
         <div className="hidden md:flex items-center space-x-4">
-          {navLinks.map((link) =>
-            link.internal ? (
-              <Link key={link.href} href={link.href} className="hover:text-gray-300">
-                {link.label}
-              </Link>
-            ) : (
-              <a key={link.href} href={link.href} className="hover:text-gray-300">
-                {link.label}
-              </a>
-            )
-          )}
+          {navLinks.map((link) => (
+            <NavLink key={link.href} item={link} className="hover:text-gray-300" />
+          ))}
           <LanguageSwitcher />
         </div>
 
-        {/* Mobile: hamburger + language switcher */}
         <div className="flex items-center gap-2 md:hidden">
           <LanguageSwitcher />
           <button
             onClick={() => setMenuOpen((v) => !v)}
             className="p-2 rounded hover:bg-white/20 transition-colors"
-            aria-label="Menu"
+            aria-label={t("menu")}
             aria-expanded={menuOpen}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -146,30 +171,16 @@ export function Navigation() {
         </div>
       </div>
 
-      {/* Mobile menu dropdown */}
       {menuOpen && (
         <div className="md:hidden mt-2 mx-4 bg-black/60 backdrop-blur-sm rounded-lg overflow-hidden">
-          {navLinks.map((link) =>
-            link.internal ? (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="block px-4 py-3 hover:bg-white/10 transition-colors"
-                onClick={() => setMenuOpen(false)}
-              >
-                {link.label}
-              </Link>
-            ) : (
-              <a
-                key={link.href}
-                href={link.href}
-                className="block px-4 py-3 hover:bg-white/10 transition-colors"
-                onClick={() => setMenuOpen(false)}
-              >
-                {link.label}
-              </a>
-            )
-          )}
+          {navLinks.map((link) => (
+            <NavLink
+              key={link.href}
+              item={link}
+              className="block px-4 py-3 hover:bg-white/10 transition-colors"
+              onClick={() => setMenuOpen(false)}
+            />
+          ))}
         </div>
       )}
     </nav>

@@ -1,11 +1,20 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useTranslations } from "next-intl";
 
 const IP = "planetearth.kr";
 
 export default function CopyIPButton() {
+  const t = useTranslations("home");
   const [copied, setCopied] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+    };
+  }, []);
 
   async function handleCopy() {
     try {
@@ -18,11 +27,13 @@ export default function CopyIPButton() {
         textarea.style.opacity = "0";
         document.body.appendChild(textarea);
         textarea.select();
-        document.execCommand("copy");
+        const succeeded = document.execCommand("copy");
         document.body.removeChild(textarea);
+        if (!succeeded) return;
       }
       setCopied(true);
-      setTimeout(() => setCopied(false), 3000);
+      if (timerRef.current) clearTimeout(timerRef.current);
+      timerRef.current = setTimeout(() => setCopied(false), 3000);
     } catch {
       // Copy failed (e.g. permission denied); leave the button state unchanged.
     }
@@ -44,6 +55,9 @@ export default function CopyIPButton() {
           <path strokeWidth={2} strokeLinejoin="round" d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
         </svg>
       )}
+      <span aria-live="polite" className="sr-only">
+        {copied ? t("copied") : ""}
+      </span>
     </button>
   );
 }

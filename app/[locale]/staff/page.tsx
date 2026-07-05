@@ -1,54 +1,55 @@
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import { useTranslations, hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { FaGithub, FaDiscord } from "react-icons/fa";
 import { FiExternalLink, FiShield, FiCode, FiUsers } from "react-icons/fi";
 import { MdPalette } from "react-icons/md";
 import { Navigation } from "@/components/Layout";
 import { Footer } from "@/components/Footer";
-import { routing, ogLocales } from "@/i18n/routing";
+import StaffAvatar from "@/components/StaffAvatar";
+import { routing } from "@/i18n/routing";
+import { localizedPageMetadata } from "@/i18n/metadata";
+
+type LinkType = "github" | "discord" | "other";
+
+type StaffLink = {
+  type: LinkType;
+  url: string;
+  label?: string;
+};
 
 type Staff = {
   id: string;
   name: string;
-  links?: {
-    type: "github" | "discord" | "other";
-    url: string;
-    label?: string;
-  }[];
+  links?: StaffLink[];
   description?: string;
-  badgeKey?: string;
-  badgeColor?: string;
+  badge?: {
+    key: string;
+    color: string;
+  };
 };
+
+const discord = (userId: string, label: string): StaffLink[] => [
+  { type: "discord", url: `https://discord.com/users/${userId}`, label },
+];
+
+const inactive = { key: "inactive", color: "bg-gray-500" };
 
 const staffData: Record<string, Staff[]> = {
   Admin: [
     {
       id: "heiz",
       name: "Heiz",
-      links: [
-        {
-          type: "discord",
-          url: "https://discord.com/users/195514337996177408",
-          label: "heizheizheiz",
-        },
-      ],
-      badgeKey: "manager",
-      badgeColor: "bg-red-500",
+      links: discord("195514337996177408", "heizheizheiz"),
+      badge: { key: "manager", color: "bg-red-500" },
     },
     {
       id: "Oneper34_",
       name: "Ago",
-      links: [
-        {
-          type: "discord",
-          url: "https://discord.com/users/722273731329916959",
-          label: "yxung_seo",
-        },
-      ],
-      badgeKey: "manager",
-      badgeColor: "bg-green-500",
+      links: discord("722273731329916959", "yxung_seo"),
+      badge: { key: "manager", color: "bg-green-500" },
     },
   ],
   Developer: [
@@ -58,143 +59,50 @@ const staffData: Record<string, Staff[]> = {
       description:
         "Life leaves more than a few scratches.\nWhy do we still seek hope as we fall apart?",
       links: [
-        {
-          type: "discord",
-          url: "https://discord.com/users/1086117494189723658",
-          label: "irochi",
-        },
-        {
-          type: "github",
-          url: "https://github.com/irochi-moe",
-          label: "GitHub",
-        },
+        ...discord("1086117494189723658", "irochi"),
+        { type: "github", url: "https://github.com/irochi-moe", label: "GitHub" },
         { type: "other", url: "https://irochi.moe", label: "irochi.moe" },
       ],
-      badgeKey: "backendDev",
-      badgeColor: "bg-indigo-500",
+      badge: { key: "backendDev", color: "bg-indigo-500" },
     },
     {
       id: "yellim",
       name: "Yellim",
-      links: [
-        {
-          type: "discord",
-          url: "https://discord.com/users/596201576327282699",
-          label: "yellim",
-        },
-      ],
-      badgeKey: "inactive",
-      badgeColor: "bg-gray-500",
+      links: discord("596201576327282699", "yellim"),
+      badge: inactive,
     },
   ],
   Moderator: [
     {
       id: "turtlefisherman",
       name: "TurtleFisherman",
-      links: [
-        {
-          type: "discord",
-          url: "https://discord.com/users/453470747130724363",
-          label: "1023_hd",
-        },
-      ],
+      links: discord("453470747130724363", "1023_hd"),
     },
-    {
-      id: "townyapi",
-      name: "TownyAPI",
-      links: [
-        {
-          type: "discord",
-          url: "https://discord.com/users/244889376025346049",
-          label: "xdgf0",
-        },
-      ],
-    },
-    {
-      id: "i_loveryo",
-      name: "I_loveryo",
-      links: [
-        {
-          type: "discord",
-          url: "https://discord.com/users/328504741711839233",
-          label: "fo1ver",
-        },
-      ],
-    },
-    {
-      id: "ma5o",
-      name: "MA5O",
-      links: [
-        {
-          type: "discord",
-          url: "https://discord.com/users/840784325834571827",
-          label: "m_ss0",
-        },
-      ],
-    },
+    { id: "townyapi", name: "TownyAPI", links: discord("244889376025346049", "xdgf0") },
+    { id: "i_loveryo", name: "I_loveryo", links: discord("328504741711839233", "fo1ver") },
+    { id: "ma5o", name: "MA5O", links: discord("840784325834571827", "m_ss0") },
     {
       id: "aceda8",
       name: "aceda8",
-      links: [
-        {
-          type: "discord",
-          url: "https://discord.com/users/589405416447016960",
-          label: "aceda8",
-        },
-      ],
-      badgeKey: "inactive",
-      badgeColor: "bg-gray-500",
+      links: discord("589405416447016960", "aceda8"),
+      badge: inactive,
     },
     {
       id: "maltese_",
       name: "Maltese_",
-      links: [
-        {
-          type: "discord",
-          url: "https://discord.com/users/376282963781877770",
-          label: "byeol._.ha",
-        },
-      ],
-      badgeKey: "inactive",
-      badgeColor: "bg-gray-500",
+      links: discord("376282963781877770", "byeol._.ha"),
+      badge: inactive,
     },
     {
       id: "royang_",
       name: "Royang_",
-      links: [
-        {
-          type: "discord",
-          url: "https://discord.com/users/1128999881801990265",
-          label: "no.l2",
-        },
-      ],
-      badgeKey: "inactive",
-      badgeColor: "bg-gray-500",
+      links: discord("1128999881801990265", "no.l2"),
+      badge: inactive,
     },
   ],
   Designer: [
-    {
-      id: "cokuun",
-      name: "CoKuun",
-      links: [
-        {
-          type: "discord",
-          url: "https://discord.com/users/387188588628017152",
-          label: "cokuun",
-        },
-      ],
-    },
-    {
-      id: "squirrel",
-      name: "Squirrel",
-      links: [
-        {
-          type: "discord",
-          url: "https://discord.com/users/268772304375382016",
-          label: "squirrel1202",
-        },
-      ],
-    },
+    { id: "cokuun", name: "CoKuun", links: discord("387188588628017152", "cokuun") },
+    { id: "squirrel", name: "Squirrel", links: discord("268772304375382016", "squirrel1202") },
   ],
 };
 
@@ -220,16 +128,6 @@ const iconMap = {
   },
 } as const;
 
-function getIcon(type: string) {
-  const iconInfo = iconMap[type as keyof typeof iconMap] || iconMap.other;
-  const IconComponent = iconInfo.component;
-  return <IconComponent className="w-4 h-4" />;
-}
-
-function getIconColor(type: string) {
-  return iconMap[type as keyof typeof iconMap]?.color || iconMap.other.color;
-}
-
 const featuredCategories = ["Admin", "Developer"] as const;
 
 type Props = {
@@ -238,32 +136,20 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
   const t = await getTranslations({ locale, namespace: "staff" });
 
   return {
     title: t("title"),
     description: t("subtitle"),
-    alternates: {
-      canonical: `/${locale}/staff`,
-      languages: {
-        ...Object.fromEntries(routing.locales.map((l) => [l, `/${l}/staff`])),
-        "x-default": `/${routing.defaultLocale}/staff`,
-      },
-    },
-    openGraph: {
-      type: "website",
+    ...localizedPageMetadata({
+      locale,
+      path: "/staff",
       title: t("title"),
       description: t("subtitle"),
-      url: `/${locale}/staff`,
-      locale: ogLocales[locale],
-      images: ["/background.webp"],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: t("title"),
-      description: t("subtitle"),
-      images: ["/background.webp"],
-    },
+    }),
   };
 }
 
@@ -279,20 +165,20 @@ function StaffContent() {
   const tBadges = useTranslations("badges");
 
   function renderStaffCard(staff: Staff) {
+    // Cards with a tooltip are focusable so touch/keyboard users can reveal
+    // the hover-only description via group-focus-within.
     return (
       <div
         key={staff.id}
-        className="bg-white shadow-lg rounded-lg p-6 hover:shadow-xl transition-shadow duration-300 relative group flex flex-col"
+        tabIndex={staff.description ? 0 : undefined}
+        className="bg-white shadow-lg rounded-lg p-6 hover:shadow-xl transition-shadow duration-300 relative group flex flex-col focus:outline-none focus:ring-2 focus:ring-blue-300"
       >
         <div className="flex items-start gap-4">
           <div className="w-16 h-16 rounded-lg overflow-hidden shadow-sm flex-shrink-0 bg-gray-100">
-            <Image
-              src={`https://api.mcheads.org/head/${staff.id}/64`}
+            <StaffAvatar
+              id={staff.id}
+              name={staff.name}
               alt={t("skinAlt", { name: staff.name })}
-              width={64}
-              height={64}
-              className="w-full h-full object-cover"
-              style={{ imageRendering: "pixelated" }}
             />
           </div>
           <div className="flex-1 min-w-0">
@@ -300,28 +186,31 @@ function StaffContent() {
               <h3 className="text-lg font-bold text-gray-800 truncate">
                 {staff.name}
               </h3>
-              {staff.badgeKey && (
+              {staff.badge && (
                 <div
-                  className={`${staff.badgeColor} text-white px-2 py-1 rounded-full text-xs font-semibold whitespace-nowrap`}
+                  className={`${staff.badge.color} text-white px-2 py-1 rounded-full text-xs font-semibold whitespace-nowrap`}
                 >
-                  {tBadges(staff.badgeKey)}
+                  {tBadges(staff.badge.key)}
                 </div>
               )}
             </div>
             {staff.links && (
               <div className="flex gap-2">
-                {staff.links.map((link) => (
-                  <a
-                    key={link.url}
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`p-1.5 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors duration-300 ${getIconColor(link.type)}`}
-                    title={link.label || link.type}
-                  >
-                    {getIcon(link.type)}
-                  </a>
-                ))}
+                {staff.links.map((link) => {
+                  const icon = iconMap[link.type];
+                  return (
+                    <a
+                      key={link.url}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`p-1.5 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors duration-300 ${icon.color}`}
+                      title={link.label || link.type}
+                    >
+                      <icon.component className="w-4 h-4" />
+                    </a>
+                  );
+                })}
               </div>
             )}
           </div>
@@ -369,6 +258,7 @@ function StaffContent() {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <link rel="preconnect" href="https://api.mcheads.org" />
       <Navigation />
 
       <section className="relative h-[30vh] flex items-center">

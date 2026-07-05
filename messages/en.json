@@ -3,11 +3,14 @@
     "staff": "Staff",
     "discord": "Discord",
     "guide": "Guide",
-    "map": "Map"
+    "map": "Map",
+    "language": "Select language",
+    "menu": "Menu"
   },
   "home": {
     "title": "Another Earth, In Your Game",
     "subtitle": "Open World Towny Earth Server — PlanetEarth",
+    "copied": "Server address copied",
     "backgroundAlt": "PlanetEarth Preview",
     "screenshotAlt": "In-game screenshot {number}",
     "stats": {

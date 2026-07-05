@@ -3,11 +3,14 @@
     "staff": "スタッフ",
     "discord": "Discord",
     "guide": "ガイド",
-    "map": "マップ"
+    "map": "マップ",
+    "language": "言語を選択",
+    "menu": "メニュー"
   },
   "home": {
     "title": "ゲームの中の、もう一つの地球",
     "subtitle": "オープンワールド タウニー 地球サーバー PlanetEarth",
+    "copied": "サーバーアドレスをコピーしました",
     "backgroundAlt": "PlanetEarth プレビュー",
     "screenshotAlt": "ゲーム内スクリーンショット {number}",
     "stats": {

@@ -6,10 +6,18 @@ export const routing = defineRouting({
   defaultLocale: "ko",
 });
 
-export const ogLocales: Record<string, string> = {
+export type Locale = (typeof routing.locales)[number];
+
+export const ogLocales: Record<Locale, string> = {
   ko: "ko_KR",
   en: "en_US",
   ja: "ja_JP",
+};
+
+export const localeLabels: Record<Locale, string> = {
+  ko: "KO",
+  en: "EN",
+  ja: "JA",
 };
 
 export const { Link, redirect, usePathname, useRouter } =
