@@ -40,8 +40,8 @@ export default function HomeContent() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { number: "45,000+", label: t("stats.totalPlayers") },
-              { number: "17,000+", label: t("stats.discordMembers") },
+              { number: "47,000+", label: t("stats.totalPlayers") },
+              { number: "18,000+", label: t("stats.discordMembers") },
               { number: "562", label: t("stats.peakPlayers") },
               { number: "320+", label: t("stats.towns") },
             ].map((stat, index, arr) => (
