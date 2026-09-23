@@ -29,6 +29,9 @@ export default function HomeContent() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-transparent"></div>
         <div className="relative z-10 text-white container mx-auto px-4">
+          <div className="inline-block bg-red-600 text-white text-sm font-semibold px-3 py-1 rounded-full mb-3">
+            {t("announcement")}
+          </div>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-5 leading-tight text-balance break-keep">
             {t("title")}
           </h1>
