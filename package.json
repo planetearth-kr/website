@@ -7,9 +7,10 @@
     "build": "next build",
     "postbuild": "next-sitemap",
     "start": "next start",
-    "lint": "next lint",
-    "preview": "npm run build && opennextjs-cloudflare build --skipNextBuild && opennextjs-cloudflare preview",
-    "deploy": "npm run build && opennextjs-cloudflare build --skipNextBuild && opennextjs-cloudflare deploy"
+    "lint": "eslint .",
+    "preview": "pnpm build && opennextjs-cloudflare build --skipNextBuild && opennextjs-cloudflare preview",
+    "deploy": "pnpm build && opennextjs-cloudflare build --skipNextBuild && opennextjs-cloudflare deploy",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@opennextjs/cloudflare": "^1.20.1",
@@ -25,9 +26,13 @@
     "@types/node": "^22",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
+    "eslint": "^10.14.0",
+    "eslint-config-next": "^16.4.4",
     "postcss": "^8.5.16",
+    "prettier": "^3.9.10",
     "tailwindcss": "^4.3.2",
     "typescript": "^5.9.3",
     "wrangler": "^4.107.0"
-  }
+  },
+  "packageManager": "pnpm@11.6.0"
 }
