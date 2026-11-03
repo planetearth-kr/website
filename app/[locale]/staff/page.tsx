@@ -191,7 +191,7 @@ function StaffContent() {
       <div
         key={staff.id}
         tabIndex={staff.description ? 0 : undefined}
-        className="bg-white shadow-lg rounded-lg p-6 hover:shadow-xl transition-shadow duration-300 relative group flex flex-col focus:outline-none focus:ring-2 focus:ring-blue-300"
+        className="bg-white shadow-lg rounded-lg p-6 hover:shadow-xl transition-shadow relative group flex flex-col focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
       >
         <div className="flex items-start gap-4">
           <div className="w-16 h-16 rounded-lg overflow-hidden shadow-sm flex-shrink-0 bg-gray-100">
@@ -224,7 +224,7 @@ function StaffContent() {
                       href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`p-1.5 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors duration-300 ${icon.color}`}
+                      className={`p-1.5 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors ${icon.color}`}
                       title={link.label || link.type}
                     >
                       <icon.component className="w-4 h-4" />
@@ -236,7 +236,7 @@ function StaffContent() {
           </div>
         </div>
         {staff.description && (
-          <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+          <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity pointer-events-none z-10">
             <div className="bg-gray-800 text-white text-sm rounded-lg px-3 py-2 shadow-lg max-w-xs w-max">
               <div className="text-center leading-relaxed whitespace-pre-line">
                 {staff.description}

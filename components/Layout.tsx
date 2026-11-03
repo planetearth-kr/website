@@ -150,7 +150,7 @@ export function Navigation() {
             <NavLink
               key={link.href}
               item={link}
-              className="hover:text-gray-300"
+              className="hover:text-gray-300 transition-colors"
             />
           ))}
           <LanguageSwitcher />

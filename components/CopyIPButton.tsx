@@ -42,7 +42,7 @@ export default function CopyIPButton() {
   return (
     <button
       onClick={handleCopy}
-      className="inline-flex items-center gap-2 text-lg px-6 py-3 bg-green-500 hover:bg-green-600 rounded-lg font-semibold transition-colors duration-300 text-white"
+      className="inline-flex items-center gap-2 text-lg px-6 py-3 bg-green-500 hover:bg-green-600 rounded-lg font-semibold transition-colors text-white"
     >
       IP: {IP}
       {copied ? (

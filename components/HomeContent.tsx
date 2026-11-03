@@ -49,9 +49,9 @@ export default function HomeContent() {
               { number: "320+", label: t("stats.towns") },
             ].map((stat, index, arr) => (
               <div key={stat.label} className="text-center relative">
-                <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold text-blue-600 mb-2">
+                <p className="text-3xl sm:text-4xl md:text-6xl font-bold text-blue-600 mb-2">
                   {stat.number}
-                </h2>
+                </p>
                 <p className="text-base text-gray-600">{stat.label}</p>
                 {index < arr.length - 1 && (
                   <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 w-[1px] h-2/3 bg-gray-200" />

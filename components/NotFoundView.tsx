@@ -13,7 +13,7 @@ export default function NotFoundView({ strings, Link }: Props) {
       <p className="text-gray-600 mb-8">{strings.description}</p>
       <Link
         href="/"
-        className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors duration-300"
+        className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors"
       >
         {strings.home}
       </Link>
