@@ -60,7 +60,11 @@ const staffData: Record<string, Staff[]> = {
         "Life leaves more than a few scratches.\nWhy do we still seek hope as we fall apart?",
       links: [
         ...discord("1086117494189723658", "irochi"),
-        { type: "github", url: "https://github.com/irochi-moe", label: "GitHub" },
+        {
+          type: "github",
+          url: "https://github.com/irochi-moe",
+          label: "GitHub",
+        },
         { type: "other", url: "https://irochi.moe", label: "irochi.moe" },
       ],
       badge: { key: "backendDev", color: "bg-indigo-500" },
@@ -78,8 +82,16 @@ const staffData: Record<string, Staff[]> = {
       name: "TurtleFisherman",
       links: discord("453470747130724363", "1023_hd"),
     },
-    { id: "townyapi", name: "TownyAPI", links: discord("244889376025346049", "xdgf0") },
-    { id: "i_loveryo", name: "I_loveryo", links: discord("328504741711839233", "fo1ver") },
+    {
+      id: "townyapi",
+      name: "TownyAPI",
+      links: discord("244889376025346049", "xdgf0"),
+    },
+    {
+      id: "i_loveryo",
+      name: "I_loveryo",
+      links: discord("328504741711839233", "fo1ver"),
+    },
     { id: "ma5o", name: "MA5O", links: discord("840784325834571827", "m_ss0") },
     {
       id: "aceda8",
@@ -101,8 +113,16 @@ const staffData: Record<string, Staff[]> = {
     },
   ],
   Designer: [
-    { id: "cokuun", name: "CoKuun", links: discord("387188588628017152", "cokuun") },
-    { id: "squirrel", name: "Squirrel", links: discord("268772304375382016", "squirrel1202") },
+    {
+      id: "cokuun",
+      name: "CoKuun",
+      links: discord("387188588628017152", "cokuun"),
+    },
+    {
+      id: "squirrel",
+      name: "Squirrel",
+      links: discord("268772304375382016", "squirrel1202"),
+    },
   ],
 };
 
@@ -232,7 +252,7 @@ function StaffContent() {
   function renderCategorySection(
     category: string,
     staffList: Staff[],
-    gridClassName: string
+    gridClassName: string,
   ) {
     const info = categoryInfo[category as keyof typeof categoryInfo];
     if (!info) return null;
@@ -249,9 +269,7 @@ function StaffContent() {
             ({t("memberCount", { count: staffList.length })})
           </span>
         </div>
-        <div className={gridClassName}>
-          {staffList.map(renderStaffCard)}
-        </div>
+        <div className={gridClassName}>{staffList.map(renderStaffCard)}</div>
       </section>
     );
   }
@@ -286,8 +304,8 @@ function StaffContent() {
                 renderCategorySection(
                   category,
                   staffData[category],
-                  "grid grid-cols-1 sm:grid-cols-2 gap-6"
-                )
+                  "grid grid-cols-1 sm:grid-cols-2 gap-6",
+                ),
               )}
             </div>
 
@@ -295,15 +313,15 @@ function StaffContent() {
               .filter(
                 ([category]) =>
                   !featuredCategories.includes(
-                    category as (typeof featuredCategories)[number]
-                  )
+                    category as (typeof featuredCategories)[number],
+                  ),
               )
               .map(([category, staffList]) =>
                 renderCategorySection(
                   category,
                   staffList,
-                  "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
-                )
+                  "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6",
+                ),
               )}
           </div>
         </div>

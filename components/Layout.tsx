@@ -14,7 +14,7 @@ import {
 function useDismiss(
   ref: RefObject<HTMLElement | null>,
   open: boolean,
-  setOpen: (open: boolean) => void
+  setOpen: (open: boolean) => void,
 ) {
   useEffect(() => {
     if (!open) return;
@@ -147,7 +147,11 @@ export function Navigation() {
 
         <div className="hidden md:flex items-center space-x-4">
           {navLinks.map((link) => (
-            <NavLink key={link.href} item={link} className="hover:text-gray-300" />
+            <NavLink
+              key={link.href}
+              item={link}
+              className="hover:text-gray-300"
+            />
           ))}
           <LanguageSwitcher />
         </div>
@@ -160,11 +164,24 @@ export function Navigation() {
             aria-label={t("menu")}
             aria-expanded={menuOpen}
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
               {menuOpen ? (
-                <path strokeWidth="2" strokeLinecap="round" d="M6 6l12 12M6 18L18 6" />
+                <path
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  d="M6 6l12 12M6 18L18 6"
+                />
               ) : (
-                <path strokeWidth="2" strokeLinecap="round" d="M4 6h16M4 12h16M4 18h16" />
+                <path
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
               )}
             </svg>
           </button>
