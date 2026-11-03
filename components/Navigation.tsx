@@ -145,22 +145,20 @@ export function Navigation() {
           PlanetEarth
         </Link>
 
-        <div className="hidden md:flex items-center space-x-4">
-          {navLinks.map((link) => (
-            <NavLink
-              key={link.href}
-              item={link}
-              className="hover:text-gray-300 transition-colors"
-            />
-          ))}
-          <LanguageSwitcher />
-        </div>
-
-        <div className="flex items-center gap-2 md:hidden">
+        <div className="flex items-center gap-2 md:gap-4">
+          <div className="hidden md:flex items-center gap-4">
+            {navLinks.map((link) => (
+              <NavLink
+                key={link.href}
+                item={link}
+                className="hover:text-gray-300 transition-colors"
+              />
+            ))}
+          </div>
           <LanguageSwitcher />
           <button
             onClick={() => setMenuOpen((v) => !v)}
-            className="p-2 rounded hover:bg-white/20 transition-colors"
+            className="p-2 rounded hover:bg-white/20 transition-colors md:hidden"
             aria-label={t("menu")}
             aria-expanded={menuOpen}
           >

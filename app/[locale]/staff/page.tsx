@@ -1,12 +1,13 @@
 import Image from "next/image";
-import { useTranslations, hasLocale } from "next-intl";
+import { hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { FaGithub, FaDiscord } from "react-icons/fa";
 import { FiExternalLink, FiShield, FiCode, FiUsers } from "react-icons/fi";
 import { MdPalette } from "react-icons/md";
-import { Navigation } from "@/components/Layout";
+import type { IconType } from "react-icons";
+import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import StaffAvatar from "@/components/StaffAvatar";
 import { routing } from "@/i18n/routing";
@@ -31,107 +32,134 @@ type Staff = {
   };
 };
 
+type Category = {
+  name: string;
+  icon: IconType;
+  color: string;
+  featured?: boolean;
+  members: Staff[];
+};
+
 const discord = (userId: string, label: string): StaffLink[] => [
   { type: "discord", url: `https://discord.com/users/${userId}`, label },
 ];
 
 const inactive = { key: "inactive", color: "bg-gray-500" };
 
-const staffData: Record<string, Staff[]> = {
-  Admin: [
-    {
-      id: "heiz",
-      name: "Heiz",
-      links: discord("195514337996177408", "heizheizheiz"),
-      badge: { key: "manager", color: "bg-red-500" },
-    },
-    {
-      id: "Oneper34_",
-      name: "Ago",
-      links: discord("722273731329916959", "yxung_seo"),
-      badge: { key: "manager", color: "bg-green-500" },
-    },
-  ],
-  Developer: [
-    {
-      id: "irochi_",
-      name: "Irochi",
-      description:
-        "Life leaves more than a few scratches.\nWhy do we still seek hope as we fall apart?",
-      links: [
-        ...discord("1086117494189723658", "irochi"),
-        {
-          type: "github",
-          url: "https://github.com/irochi-moe",
-          label: "GitHub",
-        },
-        { type: "other", url: "https://irochi.moe", label: "irochi.moe" },
-      ],
-      badge: { key: "backendDev", color: "bg-indigo-500" },
-    },
-    {
-      id: "yellim",
-      name: "Yellim",
-      links: discord("596201576327282699", "yellim"),
-      badge: inactive,
-    },
-  ],
-  Moderator: [
-    {
-      id: "turtlefisherman",
-      name: "TurtleFisherman",
-      links: discord("453470747130724363", "1023_hd"),
-    },
-    {
-      id: "townyapi",
-      name: "TownyAPI",
-      links: discord("244889376025346049", "xdgf0"),
-    },
-    {
-      id: "i_loveryo",
-      name: "I_loveryo",
-      links: discord("328504741711839233", "fo1ver"),
-    },
-    { id: "ma5o", name: "MA5O", links: discord("840784325834571827", "m_ss0") },
-    {
-      id: "aceda8",
-      name: "aceda8",
-      links: discord("589405416447016960", "aceda8"),
-      badge: inactive,
-    },
-    {
-      id: "maltese_",
-      name: "Maltese_",
-      links: discord("376282963781877770", "byeol._.ha"),
-      badge: inactive,
-    },
-    {
-      id: "royang_",
-      name: "Royang_",
-      links: discord("1128999881801990265", "no.l2"),
-      badge: inactive,
-    },
-  ],
-  Designer: [
-    {
-      id: "cokuun",
-      name: "CoKuun",
-      links: discord("387188588628017152", "cokuun"),
-    },
-    {
-      id: "squirrel",
-      name: "Squirrel",
-      links: discord("268772304375382016", "squirrel1202"),
-    },
-  ],
-};
-
-const categoryInfo = {
-  Admin: { icon: FiShield, bgColor: "bg-red-500" },
-  Developer: { icon: FiCode, bgColor: "bg-blue-500" },
-  Moderator: { icon: FiUsers, bgColor: "bg-green-500" },
-  Designer: { icon: MdPalette, bgColor: "bg-purple-500" },
-} as const;
+const categories: Category[] = [
+  {
+    name: "Admin",
+    icon: FiShield,
+    color: "bg-red-500",
+    featured: true,
+    members: [
+      {
+        id: "heiz",
+        name: "Heiz",
+        links: discord("195514337996177408", "heizheizheiz"),
+        badge: { key: "manager", color: "bg-red-500" },
+      },
+      {
+        id: "Oneper34_",
+        name: "Ago",
+        links: discord("722273731329916959", "yxung_seo"),
+        badge: { key: "manager", color: "bg-green-500" },
+      },
+    ],
+  },
+  {
+    name: "Developer",
+    icon: FiCode,
+    color: "bg-blue-500",
+    featured: true,
+    members: [
+      {
+        id: "irochi_",
+        name: "Irochi",
+        description:
+          "Life leaves more than a few scratches.\nWhy do we still seek hope as we fall apart?",
+        links: [
+          ...discord("1086117494189723658", "irochi"),
+          {
+            type: "github",
+            url: "https://github.com/irochi-moe",
+            label: "GitHub",
+          },
+          { type: "other", url: "https://irochi.moe", label: "irochi.moe" },
+        ],
+        badge: { key: "backendDev", color: "bg-indigo-500" },
+      },
+      {
+        id: "yellim",
+        name: "Yellim",
+        links: discord("596201576327282699", "yellim"),
+        badge: inactive,
+      },
+    ],
+  },
+  {
+    name: "Moderator",
+    icon: FiUsers,
+    color: "bg-green-500",
+    members: [
+      {
+        id: "turtlefisherman",
+        name: "TurtleFisherman",
+        links: discord("453470747130724363", "1023_hd"),
+      },
+      {
+        id: "townyapi",
+        name: "TownyAPI",
+        links: discord("244889376025346049", "xdgf0"),
+      },
+      {
+        id: "i_loveryo",
+        name: "I_loveryo",
+        links: discord("328504741711839233", "fo1ver"),
+      },
+      {
+        id: "ma5o",
+        name: "MA5O",
+        links: discord("840784325834571827", "m_ss0"),
+      },
+      {
+        id: "aceda8",
+        name: "aceda8",
+        links: discord("589405416447016960", "aceda8"),
+        badge: inactive,
+      },
+      {
+        id: "maltese_",
+        name: "Maltese_",
+        links: discord("376282963781877770", "byeol._.ha"),
+        badge: inactive,
+      },
+      {
+        id: "royang_",
+        name: "Royang_",
+        links: discord("1128999881801990265", "no.l2"),
+        badge: inactive,
+      },
+    ],
+  },
+  {
+    name: "Designer",
+    icon: MdPalette,
+    color: "bg-purple-500",
+    members: [
+      {
+        id: "cokuun",
+        name: "CoKuun",
+        links: discord("387188588628017152", "cokuun"),
+      },
+      {
+        id: "squirrel",
+        name: "Squirrel",
+        links: discord("268772304375382016", "squirrel1202"),
+      },
+    ],
+  },
+];
 
 const iconMap = {
   github: {
@@ -147,8 +175,6 @@ const iconMap = {
     color: "text-gray-500 hover:text-gray-600",
   },
 } as const;
-
-const featuredCategories = ["Admin", "Developer"] as const;
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -176,13 +202,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function StaffPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
-
-  return <StaffContent />;
-}
-
-function StaffContent() {
-  const t = useTranslations("staff");
-  const tBadges = useTranslations("badges");
+  const t = await getTranslations("staff");
+  const tBadges = await getTranslations("badges");
 
   function renderStaffCard(staff: Staff) {
     // Cards with a tooltip are focusable so touch/keyboard users can reveal
@@ -194,7 +215,7 @@ function StaffContent() {
         className="bg-white shadow-lg rounded-lg p-6 hover:shadow-xl transition-shadow relative group flex flex-col focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
       >
         <div className="flex items-start gap-4">
-          <div className="w-16 h-16 rounded-lg overflow-hidden shadow-sm flex-shrink-0 bg-gray-100">
+          <div className="w-16 h-16 rounded-lg overflow-hidden shadow-sm shrink-0 bg-gray-100">
             <StaffAvatar
               id={staff.id}
               name={staff.name}
@@ -236,12 +257,12 @@ function StaffContent() {
           </div>
         </div>
         {staff.description && (
-          <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity pointer-events-none z-10">
+          <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity pointer-events-none z-10">
             <div className="bg-gray-800 text-white text-sm rounded-lg px-3 py-2 shadow-lg max-w-xs w-max">
               <div className="text-center leading-relaxed whitespace-pre-line">
                 {staff.description}
               </div>
-              <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-800"></div>
+              <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-800"></div>
             </div>
           </div>
         )}
@@ -249,27 +270,21 @@ function StaffContent() {
     );
   }
 
-  function renderCategorySection(
-    category: string,
-    staffList: Staff[],
-    gridClassName: string,
-  ) {
-    const info = categoryInfo[category as keyof typeof categoryInfo];
-    if (!info) return null;
-    const IconComponent = info.icon;
-
+  function renderCategorySection(category: Category, gridClassName: string) {
     return (
-      <section key={category}>
+      <section key={category.name}>
         <div className="flex items-center gap-3 mb-6">
-          <div className={`${info.bgColor} p-2 rounded-lg shadow-sm`}>
-            <IconComponent className="w-5 h-5 text-white" />
+          <div className={`${category.color} p-2 rounded-lg shadow-sm`}>
+            <category.icon className="w-5 h-5 text-white" />
           </div>
-          <h2 className="text-2xl font-bold text-gray-800">{category}</h2>
+          <h2 className="text-2xl font-bold text-gray-800">{category.name}</h2>
           <span className="text-sm text-gray-500">
-            ({t("memberCount", { count: staffList.length })})
+            ({t("memberCount", { count: category.members.length })})
           </span>
         </div>
-        <div className={gridClassName}>{staffList.map(renderStaffCard)}</div>
+        <div className={gridClassName}>
+          {category.members.map(renderStaffCard)}
+        </div>
       </section>
     );
   }
@@ -287,7 +302,7 @@ function StaffContent() {
           priority
           className="object-cover object-[50%_25%]"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-transparent"></div>
+        <div className="absolute inset-0 bg-linear-to-b from-black/40 to-transparent"></div>
         <div className="relative z-10 text-white container mx-auto px-4">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 leading-tight">
             {t("title")}
@@ -300,26 +315,21 @@ function StaffContent() {
         <div className="container mx-auto px-4">
           <div className="space-y-12">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {featuredCategories.map((category) =>
-                renderCategorySection(
-                  category,
-                  staffData[category],
-                  "grid grid-cols-1 sm:grid-cols-2 gap-6",
-                ),
-              )}
+              {categories
+                .filter((category) => category.featured)
+                .map((category) =>
+                  renderCategorySection(
+                    category,
+                    "grid grid-cols-1 sm:grid-cols-2 gap-6",
+                  ),
+                )}
             </div>
 
-            {Object.entries(staffData)
-              .filter(
-                ([category]) =>
-                  !featuredCategories.includes(
-                    category as (typeof featuredCategories)[number],
-                  ),
-              )
-              .map(([category, staffList]) =>
+            {categories
+              .filter((category) => !category.featured)
+              .map((category) =>
                 renderCategorySection(
                   category,
-                  staffList,
                   "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6",
                 ),
               )}
