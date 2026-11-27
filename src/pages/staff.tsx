@@ -1,7 +1,10 @@
+import type {CSSProperties} from 'react';
 import clsx from 'clsx';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
 import Link from '@docusaurus/Link';
+import Head from '@docusaurus/Head';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import {translate} from '@docusaurus/Translate';
 import {FaDiscord, FaGithub} from 'react-icons/fa';
 import {FiCode, FiExternalLink, FiShield, FiUsers} from 'react-icons/fi';
@@ -65,6 +68,7 @@ const categories: {name: string; Icon: IconType; members: Member[]}[] = [
 ];
 
 export default function Staff() {
+  const heroImage = useBaseUrl('/img/site/background.webp');
   const title = translate({id: 'staff.title', message: '운영진 소개'});
   const subtitle = translate({id: 'staff.subtitle', message: 'PlanetEarth를 함께 만들어가는 사람들'});
   const badges: Record<string, string> = {
@@ -75,7 +79,13 @@ export default function Staff() {
 
   return (
     <Layout title={title} description={subtitle}>
-      <header className={clsx('hero', styles.hero, styles.staffHero)}>
+      <Head>
+        <link rel="preload" as="image" href={heroImage} fetchPriority="high" />
+      </Head>
+      <header
+        className={clsx('hero', styles.hero, styles.staffHero)}
+        style={{'--hero-image': `url(${heroImage})`} as CSSProperties}
+      >
         <div>
           <Heading as="h1" className="hero__title">
             {title}
@@ -112,7 +122,12 @@ export default function Staff() {
                         {Icon: FaDiscord, href: `https://discord.com/users/${member.discord}`, title: 'Discord'},
                         ...(member.links ?? []),
                       ].map((link) => (
-                        <Link key={link.href} href={link.href} title={link.title}>
+                        <Link
+                          key={link.href}
+                          href={link.href}
+                          title={link.title}
+                          aria-label={`${member.name} ${link.title}`}
+                        >
                           <link.Icon />
                         </Link>
                       ))}

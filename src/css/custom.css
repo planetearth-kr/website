@@ -15,6 +15,7 @@
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
   --ifm-navbar-shadow: none;
+  --ifm-badge-color: var(--ifm-background-color);
 }
 
 .navbar {
@@ -78,6 +79,27 @@ html.plugin-pages .DocSearch-Button {
   width: 62%;
   height: auto;
   margin-left: 1%;
+}
+
+@media (max-width: 48rem) {
+  .dynmap-screenshot {
+    width: min(100%, 18.75rem);
+    margin-left: 0;
+  }
+
+  .dynmap-screenshot-wide {
+    width: 100%;
+    margin: 0.5rem 0 0;
+  }
+}
+
+.markdown {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.markdown :is(h1, h2, h3, h4) {
+  text-wrap: balance;
 }
 
 .DocSearch-Form {

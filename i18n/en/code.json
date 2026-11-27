@@ -14,8 +14,26 @@
   "home.copied": {
     "message": "Server address copied"
   },
-  "home.screenshotAlt": {
-    "message": "In-game screenshot {number}"
+  "home.copyFailed": {
+    "message": "Couldn't copy automatically. The address is selected so you can copy it yourself"
+  },
+  "home.screenshot1": {
+    "message": "Planet Earth Space Administration sign with a globe sculpture"
+  },
+  "home.screenshot2": {
+    "message": "Players fighting in a dark stone corridor"
+  },
+  "home.screenshot3": {
+    "message": "A canal lined with European-style buildings"
+  },
+  "home.screenshot4": {
+    "message": "Players gathered in front of an outdoor stage"
+  },
+  "home.screenshot5": {
+    "message": "A snowfield with icebergs and a base in the distance"
+  },
+  "home.screenshot6": {
+    "message": "A pond-side pavilion with a player sitting in a chair"
   },
   "home.stats.totalPlayers": {
     "message": "Total Players"

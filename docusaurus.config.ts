@@ -60,7 +60,7 @@ const config: Config = {
     image: 'img/site/og-image.jpg',
     colorMode: {defaultMode: 'dark', disableSwitch: true},
     navbar: {
-      logo: {alt: 'PlanetEarth', src: 'img/logo.png'},
+      logo: {alt: 'PlanetEarth', src: 'img/logo.webp'},
       items: [
         {type: 'docSidebar', sidebarId: 'tutorialSidebar', label: '가이드', position: 'left'},
         {to: '/staff', label: '운영진', position: 'left'},

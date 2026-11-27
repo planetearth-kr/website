@@ -14,8 +14,26 @@
   "home.copied": {
     "message": "サーバーアドレスをコピーしました"
   },
-  "home.screenshotAlt": {
-    "message": "ゲーム内スクリーンショット {number}"
+  "home.copyFailed": {
+    "message": "自動でコピーできませんでした。選択されたアドレスを手動でコピーしてください"
+  },
+  "home.screenshot1": {
+    "message": "Planet Earth Space Administrationの看板と地球儀のオブジェ"
+  },
+  "home.screenshot2": {
+    "message": "暗い石の通路で戦うプレイヤーたち"
+  },
+  "home.screenshot3": {
+    "message": "ヨーロッパ風の建物が並ぶ運河"
+  },
+  "home.screenshot4": {
+    "message": "野外ステージの前に集まったプレイヤーたち"
+  },
+  "home.screenshot5": {
+    "message": "氷山と基地が見える雪原"
+  },
+  "home.screenshot6": {
+    "message": "池のほとりのあずまやと椅子に座るプレイヤー"
   },
   "home.stats.totalPlayers": {
     "message": "累計プレイヤー"

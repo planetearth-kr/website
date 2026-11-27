@@ -7,7 +7,7 @@
   background:
     linear-gradient(transparent 70%, var(--ifm-background-color)),
     linear-gradient(90deg, color-mix(in srgb, var(--ifm-background-color) 50%, transparent), transparent 60%),
-    url('/img/site/background.webp') center top / auto max(100%, 70vh, 56.25vw);
+    var(--hero-image) center top / auto max(100%, 70vh, 56.25vw);
 }
 
 .staffHero {
@@ -44,6 +44,19 @@
   background: rgb(255 255 255 / 0.1);
 }
 
+.links a:hover {
+  background: var(--ifm-hover-overlay);
+}
+
+.status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
 .main {
   padding: 4rem var(--ifm-navbar-padding-horizontal);
 }
@@ -62,9 +75,14 @@
   grid-template-columns: repeat(auto-fill, minmax(max(18rem, 30%), 1fr));
 }
 
+.stats > * {
+  container-type: inline-size;
+}
+
 .stat {
   display: block;
-  font-size: 3rem;
+  font-size: min(3rem, 22cqi);
+  white-space: nowrap;
   color: var(--ifm-color-primary);
 }
 
@@ -104,8 +122,19 @@
 }
 
 .head {
+  position: relative;
   border-radius: var(--ifm-global-radius);
+  background: var(--ifm-color-emphasis-200);
   image-rendering: pixelated;
+}
+
+/* 이미지를 불러오지 못했을 때만 브라우저가 그린다. 깨진 이미지 아이콘을 덮는다. */
+.head::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: inherit;
 }
 
 .info {
@@ -120,7 +149,13 @@
 
 .links {
   display: flex;
-  gap: 0.75rem;
-  margin-top: 0.75rem;
+  margin: 0.3125rem 0 -0.4375rem -0.8125rem;
   font-size: 1.125rem;
+}
+
+/* 18px 아이콘 주위에 44px 터치 영역을 두고, 음수 margin으로 카드 크기를 유지한다. */
+.links a {
+  display: flex;
+  padding: 0.8125rem;
+  border-radius: var(--ifm-global-radius);
 }
