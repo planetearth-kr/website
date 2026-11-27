@@ -21,3 +21,6 @@ npm-debug.log*
 
 # Local secrets
 .env
+
+# Wrangler
+.wrangler/

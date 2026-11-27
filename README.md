@@ -13,11 +13,18 @@ pnpm start              # 한국어만 띄웁니다. 홈은 /, 가이드는 /doc
 pnpm start --locale en  # 영어(ja는 일본어) 확인
 ```
 
+언어 자동 이동과 짧은 주소 리다이렉트는 Cloudflare Pages 미들웨어라 빌드 결과로만 확인할 수 있습니다.
+
+```bash
+pnpm build && npx wrangler pages dev build
+```
+
 ## 구성
 
 - `src/pages`: 홈과 운영진 페이지
 - `src/docs`: 가이드(`/docs`)
 - `i18n/`: 홈과 운영진의 영어·일본어 문구. 가이드는 번역하지 않습니다.
+- `functions/`: Cloudflare Pages 미들웨어(언어 자동 이동, `/map` 같은 짧은 주소)
 
 ## 빌드 및 검증
 
@@ -26,6 +33,7 @@ pnpm build
 pnpm typecheck
 pnpm lint
 pnpm format
+node --test functions/ scripts/
 ```
 
 ## 기여하기
