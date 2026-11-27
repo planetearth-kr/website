@@ -40,15 +40,27 @@ const pageTitle = (page) => plain(Object.values(page.properties || {}).find((p) 
 // 생성/수정 시각 같은 자동 속성은 매번 바뀌어 diff 노이즈가 되므로 뺀다.
 function propText(p) {
   switch (p.type) {
-    case 'rich_text': return plain(p.rich_text);
-    case 'select': case 'status': return p[p.type]?.name ?? '';
-    case 'multi_select': return p.multi_select.map((o) => o.name).join(', ');
-    case 'date': return p.date ? [p.date.start, p.date.end].filter(Boolean).join(' → ') : '';
-    case 'number': return p.number == null ? '' : String(p.number);
-    case 'checkbox': return p.checkbox ? '✅' : '';
-    case 'url': case 'email': case 'phone_number': return p[p.type] ?? '';
-    case 'people': return p.people.map((u) => u.name ?? '').join(', ');
-    default: return '';
+    case 'rich_text':
+      return plain(p.rich_text);
+    case 'select':
+    case 'status':
+      return p[p.type]?.name ?? '';
+    case 'multi_select':
+      return p.multi_select.map((o) => o.name).join(', ');
+    case 'date':
+      return p.date ? [p.date.start, p.date.end].filter(Boolean).join(' → ') : '';
+    case 'number':
+      return p.number == null ? '' : String(p.number);
+    case 'checkbox':
+      return p.checkbox ? '✅' : '';
+    case 'url':
+    case 'email':
+    case 'phone_number':
+      return p[p.type] ?? '';
+    case 'people':
+      return p.people.map((u) => u.name ?? '').join(', ');
+    default:
+      return '';
   }
 }
 const rowProps = (row) =>
@@ -80,7 +92,9 @@ async function readPage(id, title, props = []) {
 
 async function readDatabase(block) {
   // 노션 API는 뷰 정렬을 알려주지 않는다. 생성 순서도 뒤섞여 있어서 제목 자연 정렬("제 2회" < "제 10회")을 쓴다.
-  const rows = (await paginate(`databases/${block.id}/query`, {})).sort((a, b) => pageTitle(a).localeCompare(pageTitle(b), 'ko', {numeric: true}));
+  const rows = (await paginate(`databases/${block.id}/query`, {})).sort((a, b) =>
+    pageTitle(a).localeCompare(pageTitle(b), 'ko', {numeric: true}),
+  );
   const children = [];
   for (const row of rows) children.push(await readPage(row.id, pageTitle(row), rowProps(row)));
   return {id: block.id, type: 'database', title: clean(block.child_database.title), blocks: [], children};

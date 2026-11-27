@@ -3,7 +3,8 @@
 export const escapeText = (s) => s.replace(/[\\`*_~[\]<>{}|]/g, '\\$&');
 
 // 줄 맨 앞에서 제목/목록으로 읽히는 패턴을 막는다.
-const escapeLineStart = (s) => s.replace(/^(#|[-+]|\d+(?=[.)]))(?=[\s.)])/, (m) => (/^\d/.test(m) ? m + '\\' : '\\' + m));
+const escapeLineStart = (s) =>
+  s.replace(/^(#|[-+]|\d+(?=[.)]))(?=[\s.)])/, (m) => (/^\d/.test(m) ? m + '\\' : '\\' + m));
 
 const encodeHref = (href) => href.replace(/[ ()]/g, (c) => encodeURIComponent(c));
 
@@ -134,7 +135,10 @@ function renderBlock(b, ctx) {
     case 'table':
       return table(b, ctx);
     case 'column_list':
-      return (b.children || []).map((col) => renderBlocks(col.children || [], ctx)).filter(Boolean).join('\n\n');
+      return (b.children || [])
+        .map((col) => renderBlocks(col.children || [], ctx))
+        .filter(Boolean)
+        .join('\n\n');
     case 'synced_block':
       return kids();
     case 'child_page':

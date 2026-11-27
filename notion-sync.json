@@ -1,8 +1,6 @@
 {
   "root": "9e3ba370-35e4-4f59-bf49-2a8bede7b646",
-  "ignore": [
-    "df5041ca-f282-4c3f-b2a3-31013c25acbf"
-  ],
+  "ignore": ["df5041ca-f282-4c3f-b2a3-31013c25acbf"],
   "pages": {
     "economy/commerce-advanced.mdx": "369dd522-c7e8-80d9-9210-fab91ff54ebc",
     "economy/commerce.mdx": "2d0dd522-c7e8-8082-97be-c9405a9c1138",
@@ -71,10 +69,7 @@
     "life/index.mdx": "cc4747a0-462e-4709-8c44-dec702f36483",
     "life/instruments.mdx": "36ddd522-c7e8-8028-806f-de76daa5ba9b",
     "life/mcmmo.mdx": "df16d784-e76f-40b7-ac45-303bdb53c163",
-    "policy/refund.mdx": [
-      "1b4dd522-c7e8-802e-a67e-fab55a3ed7ed",
-      "f223e764-9327-4ad0-8e09-d088a33feccf"
-    ],
+    "policy/refund.mdx": ["1b4dd522-c7e8-802e-a67e-fab55a3ed7ed", "f223e764-9327-4ad0-8e09-d088a33feccf"],
     "policy/restricted.mdx": "0da48877-53b6-42f2-9352-3f1b2b6be5ef",
     "policy/rules.mdx": "5a81e13a-a978-4b60-963d-22265baac65c",
     "policy/tickets.mdx": "fe7a47ec-98d1-48de-bdac-b2152c544d73",
@@ -93,30 +88,18 @@
     "pvp/obsidian-mine.mdx": "376dd522-c7e8-80eb-8578-d9a12c6e22de",
     "pvp/operation.mdx": "315dd522-c7e8-80a5-8e7a-ece84cd4bf7d",
     "pvp/war.mdx": "1b343156-6ef6-4851-af87-5ecc6337b9d4",
-    "reference/commands.mdx": [
-      "a01f8520-2557-4fb7-9940-eee9da209eeb",
-      "58b2041b-6511-423d-805c-6dd432d84aa3"
-    ],
+    "reference/commands.mdx": ["a01f8520-2557-4fb7-9940-eee9da209eeb", "58b2041b-6511-423d-805c-6dd432d84aa3"],
     "support/earth-pass.mdx": "2a0dd522-c7e8-806c-a90b-e3ca0cab2652",
     "support/shop.mdx": "f223e764-9327-4ad0-8e09-d088a33feccf",
     "towny/advanced.mdx": "7f42acf3-1688-42de-bcfc-66473ccbb022",
-    "towny/alliance.mdx": [
-      "bb04ea2a-5faa-472a-8d52-4dd46f8bf2b5",
-      "1b343156-6ef6-4851-af87-5ecc6337b9d4"
-    ],
+    "towny/alliance.mdx": ["bb04ea2a-5faa-472a-8d52-4dd46f8bf2b5", "1b343156-6ef6-4851-af87-5ecc6337b9d4"],
     "towny/basics.mdx": "bb04ea2a-5faa-472a-8d52-4dd46f8bf2b5",
     "towny/index.mdx": "58b2041b-6511-423d-805c-6dd432d84aa3",
-    "towny/nation.mdx": [
-      "bb04ea2a-5faa-472a-8d52-4dd46f8bf2b5",
-      "7f42acf3-1688-42de-bcfc-66473ccbb022"
-    ],
+    "towny/nation.mdx": ["bb04ea2a-5faa-472a-8d52-4dd46f8bf2b5", "7f42acf3-1688-42de-bcfc-66473ccbb022"],
     "towny/plot-permissions.mdx": "1b6dd522-c7e8-80e0-b375-cb970dfb621d",
     "towny/research.mdx": "aa099ad0-88c9-461c-86a2-de486b31768e",
     "towny/settlement.mdx": "18bdd522-c7e8-80aa-80d2-f9e12bb7e717",
-    "towny/town.mdx": [
-      "bb04ea2a-5faa-472a-8d52-4dd46f8bf2b5",
-      "7f42acf3-1688-42de-bcfc-66473ccbb022"
-    ],
+    "towny/town.mdx": ["bb04ea2a-5faa-472a-8d52-4dd46f8bf2b5", "7f42acf3-1688-42de-bcfc-66473ccbb022"],
     "towny/upkeep.mdx": "3a0dd522-c7e8-807d-8e62-d2d4a79cc4aa"
   },
   "redirects": {

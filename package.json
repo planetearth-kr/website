@@ -9,7 +9,9 @@
     "notion-sync": "node --env-file-if-exists=.env scripts/notion-sync/index.mjs",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "lint": "eslint .",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@docusaurus/core": "3.10.2",
@@ -23,12 +25,19 @@
     "react-dom": "^19.3.1"
   },
   "devDependencies": {
+    "@docusaurus/eslint-plugin": "3.10.2",
     "@docusaurus/module-type-aliases": "3.10.2",
     "@docusaurus/tsconfig": "3.10.2",
     "@docusaurus/types": "3.10.2",
+    "@eslint/js": "^10.0.1",
     "@types/node": "^26.6.5",
+    "eslint": "^10.15.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^17.14.0",
+    "prettier": "^3.10.1",
     "sharp": "^0.35.5",
-    "typescript": "~6.0.3"
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.74.0"
   },
   "browserslist": {
     "production": [

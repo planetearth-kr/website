@@ -16,7 +16,9 @@ pnpm start
 
 ```bash
 pnpm build
-pnpm typecheck 
+pnpm typecheck
+pnpm lint
+pnpm format
 ```
 
 ## 기여하기

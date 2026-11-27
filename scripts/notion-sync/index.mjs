@@ -24,7 +24,9 @@ const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 export function imageName(url) {
   const {pathname} = new URL(url);
   const parts = pathname.split('/').map(decodeURIComponent);
-  const id = parts.findLast((p) => UUID.test(p))?.toLowerCase() ?? createHash('sha1').update(pathname).digest('hex').slice(0, 16);
+  const id =
+    parts.findLast((p) => UUID.test(p))?.toLowerCase() ??
+    createHash('sha1').update(pathname).digest('hex').slice(0, 16);
   const ext = extname(parts.at(-1)).toLowerCase();
   // 원본 PNG가 너무 커서(전체 400MB+) 받을 때 한 번만 webp로 바꾼다. gif/svg는 그대로.
   return id + (['.gif', '.svg'].includes(ext) ? ext : '.webp');
@@ -37,7 +39,9 @@ export function snapshotFiles(tree, ignoreIds = []) {
   const collect = (node, depth) => {
     if (ignore.has(norm(node.id))) return;
     nodes.set(norm(node.id), node);
-    treeLines.push(`${'  '.repeat(depth)}- ${escapeText(node.title)}${node.type === 'database' ? ' (DB)' : ''} — \`${dashed(node.id)}\``);
+    treeLines.push(
+      `${'  '.repeat(depth)}- ${escapeText(node.title)}${node.type === 'database' ? ' (DB)' : ''} — \`${dashed(node.id)}\``,
+    );
     node.children.forEach((c) => collect(c, depth + 1));
   };
   collect(tree, 0);
@@ -79,7 +83,9 @@ async function saveImage(name, url) {
   const res = await fetch(url);
   if (!res.ok) throw new Error(`이미지 다운로드 실패 ${res.status}: ${name}`);
   const buf = Buffer.from(await res.arrayBuffer());
-  const out = name.endsWith('.webp') ? await sharp(buf).rotate().resize({width: 1600, withoutEnlargement: true}).webp({quality: 80}).toBuffer() : buf;
+  const out = name.endsWith('.webp')
+    ? await sharp(buf).rotate().resize({width: 1600, withoutEnlargement: true}).webp({quality: 80}).toBuffer()
+    : buf;
   writeFileSync(join(IMAGES, name), out);
 }
 
@@ -92,7 +98,10 @@ async function main() {
   const oldFiles = readDir(SNAPSHOT);
   const firstRun = oldFiles.length === 0;
   // 권한 해제나 장애로 트리가 비어 보일 때 대량 삭제 PR이 나가는 것을 막는다.
-  if (files.size < oldFiles.length / 2) throw new Error(`노션 페이지가 ${oldFiles.length}개에서 ${files.size}개로 줄었습니다 (절반 미만). 노션 연결 권한을 확인하세요.`);
+  if (files.size < oldFiles.length / 2)
+    throw new Error(
+      `노션 페이지가 ${oldFiles.length}개에서 ${files.size}개로 줄었습니다 (절반 미만). 노션 연결 권한을 확인하세요.`,
+    );
 
   // 새로 등장한 이미지만 받는다. 첫 실행(베이스라인)은 docs에 이미 이미지가 있으므로 받지 않는다.
   const known = new Set(oldFiles.flatMap((f) => imageRefs(readFileSync(join(SNAPSHOT, f), 'utf8'))));
@@ -126,12 +135,19 @@ async function main() {
   const mapped = new Set(Object.values(manifest.pages).flat().map(dashed));
   const unmapped = [...files.keys()].filter((f) => f !== TREE_FILE && !mapped.has(f.slice(0, -3)));
   const title = (f) => `${files.get(f)?.split('\n')[0].slice(2) ?? f} (\`${f}\`)`;
-  const section = (head, items) => (items.length ? [`### ${head} (${items.length})`, ...items.map((i) => `- ${i}`), ''] : []);
+  const section = (head, items) =>
+    items.length ? [`### ${head} (${items.length})`, ...items.map((i) => `- ${i}`), ''] : [];
   console.log(
     [
       ...section('노션에서 바뀐 페이지', changed.map(title)),
-      ...section('노션에서 사라진 페이지', removed.map((f) => `\`${f}\``)),
-      ...section('새 이미지 (static/img/notion)', fresh.map(([n]) => `\`${n}\``)),
+      ...section(
+        '노션에서 사라진 페이지',
+        removed.map((f) => `\`${f}\``),
+      ),
+      ...section(
+        '새 이미지 (static/img/notion)',
+        fresh.map(([n]) => `\`${n}\``),
+      ),
       ...section('docs 매핑 없는 노션 페이지', unmapped.map(title)),
       ...section('변환 경고', warnings),
     ].join('\n'),
