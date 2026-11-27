@@ -13,13 +13,9 @@ const config: Config = {
   onBrokenLinks: 'throw',
   favicon: 'img/favicon.ico',
 
-  future: {
-    v4: true,
-  },
+  future: {v4: true},
 
   trailingSlash: false,
-  organizationName: 'planetearth-kr',
-  projectName: 'docs',
 
   i18n: {
     defaultLocale: 'ko',
@@ -27,11 +23,7 @@ const config: Config = {
     localeConfigs: {ko: {label: 'KO'}, en: {label: 'EN'}, ja: {label: 'JA'}},
   },
 
-  markdown: {
-    hooks: {
-      onBrokenMarkdownLinks: 'warn',
-    },
-  },
+  markdown: {hooks: {onBrokenMarkdownLinks: 'warn'}},
 
   presets: [
     [
@@ -48,11 +40,8 @@ const config: Config = {
           changefreq: 'weekly',
           priority: 0.5,
           ignorePatterns: ['/tags/**', '/search/**'],
-          filename: 'sitemap.xml',
         },
-        theme: {
-          customCss: './src/css/custom.css',
-        },
+        theme: {customCss: './src/css/custom.css'},
       } satisfies Preset.Options,
     ],
   ],
@@ -69,46 +58,26 @@ const config: Config = {
 
   themeConfig: {
     image: 'img/site/og-image.jpg',
+    colorMode: {defaultMode: 'dark', disableSwitch: true},
     navbar: {
-      logo: {
-        alt: 'PlanetEarth',
-        src: 'img/logo.png',
-      },
+      logo: {alt: 'PlanetEarth', src: 'img/logo.png'},
       items: [
-        {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
-          position: 'left',
-          label: '가이드',
-        },
+        {type: 'docSidebar', sidebarId: 'tutorialSidebar', label: '가이드', position: 'left'},
         {to: '/staff', label: '운영진', position: 'left'},
-        {
-          href: 'https://map.planetearth.kr',
-          label: '웹 지도',
-          position: 'left',
-        },
-        {
-          href: 'https://discord.planetearth.kr',
-          label: '디스코드',
-          position: 'left',
-        },
+        {href: 'https://map.planetearth.kr', label: '웹 지도', position: 'left'},
+        {href: 'https://discord.planetearth.kr', label: '디스코드', position: 'left'},
         {type: 'localeDropdown', position: 'right', queryString: '?persistLocale=true'},
       ],
     },
     footer: {
-      copyright: `Copyright 2022 - ${new Date().getFullYear()} 플래닛네트워크. All rights reserved.`,
+      copyright: `<span>Copyright 2022-${new Date().getFullYear()} 플래닛네트워크. All rights reserved.</span><span>PlanetEarth is not affiliated with Mojang or Microsoft. Help: contact@planetearth.kr</span>`,
     },
     algolia: {
       appId: 'K7LZJ1O8AW',
       apiKey: 'a3cec996f9bf8146ef99af8fedd6b2a2',
       indexName: 'planetearth_docs',
-      contextualSearch: true,
-      searchParameters: {},
     },
-    prism: {
-      theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
-    },
+    prism: {theme: prismThemes.dracula},
   } satisfies Preset.ThemeConfig,
 };
 

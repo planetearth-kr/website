@@ -8,6 +8,9 @@
   "home.subtitle": {
     "message": "オープンワールド タウニー 地球サーバー PlanetEarth"
   },
+  "home.copy": {
+    "message": "サーバーアドレスをコピー"
+  },
   "home.copied": {
     "message": "サーバーアドレスをコピーしました"
   },

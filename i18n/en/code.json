@@ -8,6 +8,9 @@
   "home.subtitle": {
     "message": "Open World Towny Earth Server — PlanetEarth"
   },
+  "home.copy": {
+    "message": "Copy server address"
+  },
   "home.copied": {
     "message": "Server address copied"
   },

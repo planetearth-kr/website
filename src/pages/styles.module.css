@@ -1,20 +1,65 @@
 .hero {
   min-height: 70vh;
+  padding-inline: var(--ifm-navbar-padding-horizontal);
   color: #fff;
+  word-break: keep-all;
+  text-shadow: 0 1px 12px rgb(0 0 0 / 0.5);
   background:
-    linear-gradient(rgb(0 0 0 / 0.4), transparent),
-    url('/img/site/background.webp') center / cover;
+    linear-gradient(transparent 70%, var(--ifm-background-color)),
+    linear-gradient(90deg, color-mix(in srgb, var(--ifm-background-color) 50%, transparent), transparent 60%),
+    url('/img/site/background.webp') center top / auto max(100%, 70vh, 56.25vw);
 }
 
 .staffHero {
   min-height: 30vh;
-  background-position: center 25%;
+}
+
+.title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+}
+
+.subtitle {
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+}
+
+.ip {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  padding-left: 1.25rem;
+  border: 1px solid rgb(255 255 255 / 0.3);
+  border-radius: var(--ifm-global-radius);
+  background: rgb(0 0 0 / 0.3);
+  backdrop-filter: blur(8px);
+  font-weight: 600;
+}
+
+.copy {
+  display: inline-flex;
+  padding: 0.875rem;
+  border-left: 1px solid rgb(255 255 255 / 0.3);
+}
+
+.copy:hover {
+  background: rgb(255 255 255 / 0.1);
+}
+
+.main {
+  padding: 4rem var(--ifm-navbar-padding-horizontal);
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
   gap: 1.5rem;
+}
+
+.stats {
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+}
+
+.gallery {
+  grid-template-columns: repeat(auto-fill, minmax(max(18rem, 30%), 1fr));
 }
 
 .stat {
@@ -29,6 +74,53 @@
   border-radius: var(--ifm-card-border-radius);
 }
 
+.categories {
+  display: grid;
+  gap: 3rem 1.5rem;
+}
+
+.wide {
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 1280px) {
+  .categories,
+  .categories .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .wide .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.member {
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: var(--ifm-global-radius);
+}
+
 .head {
+  border-radius: var(--ifm-global-radius);
   image-rendering: pixelated;
+}
+
+.info {
+  flex: 1;
+  container-type: inline-size;
+}
+
+.name {
+  font-size: min(1.125rem, 12cqi);
+  overflow-wrap: anywhere;
+}
+
+.links {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+  font-size: 1.125rem;
 }

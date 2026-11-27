@@ -11,8 +11,8 @@ import styles from './styles.module.css';
 
 const inactive = ['inactive', 'secondary'];
 
-type Member = {id: string; name: string; discord: string; badge?: string[]; description?: string; links?: Link[]};
-type Link = {Icon: IconType; href: string; title: string};
+type MemberLink = {Icon: IconType; href: string; title: string};
+type Member = {id: string; name: string; discord: string; badge?: string[]; links?: MemberLink[]};
 
 const categories: {name: string; Icon: IconType; members: Member[]}[] = [
   {
@@ -30,7 +30,6 @@ const categories: {name: string; Icon: IconType; members: Member[]}[] = [
       {
         id: 'irochi_',
         name: 'Irochi',
-        description: 'Life leaves more than a few scratches.\nWhy do we still seek hope as we fall apart?',
         discord: '1086117494189723658',
         links: [
           {Icon: FaGithub, href: 'https://github.com/irochi-moe', title: 'GitHub'},
@@ -77,47 +76,46 @@ export default function Staff() {
   return (
     <Layout title={title} description={subtitle}>
       <header className={clsx('hero', styles.hero, styles.staffHero)}>
-        <div className="container">
+        <div>
           <Heading as="h1" className="hero__title">
             {title}
           </Heading>
           <p className="hero__subtitle">{subtitle}</p>
         </div>
       </header>
-      <main className="container margin-vert--lg">
+      <main className={clsx(styles.main, styles.categories)}>
         {categories.map(({name, Icon, members}) => (
-          <section key={name} className="margin-bottom--xl">
+          <section key={name} className={clsx(members.length > 2 && styles.wide)}>
             <Heading as="h2">
               <Icon /> {name} <small>({members.length})</small>
             </Heading>
             <div className={styles.grid}>
               {members.map((member) => (
-                <div key={member.id} className="card shadow--md padding--md">
-                  <div className="avatar">
-                    <img
-                      src={`https://api.mcheads.org/head/${member.id}/64`}
-                      alt={translate({id: 'staff.skinAlt', message: '{name} 마인크래프트 스킨'}, {name: member.name})}
-                      loading="lazy"
-                      className={clsx('avatar__photo avatar__photo--lg', styles.head)}
-                    />
-                    <div className="avatar__intro">
-                      <div className="avatar__name">
-                        {member.name}{' '}
-                        {member.badge && (
-                          <span className={`badge badge--${member.badge[1]}`}>{badges[member.badge[0]]}</span>
-                        )}
-                      </div>
-                      {member.description && <small className="avatar__subtitle">{member.description}</small>}
-                      <div>
-                        {[
-                          {Icon: FaDiscord, href: `https://discord.com/users/${member.discord}`, title: 'Discord'},
-                          ...(member.links ?? []),
-                        ].map((link) => (
-                          <Link key={link.href} href={link.href} title={link.title} className="margin-right--sm">
-                            <link.Icon />
-                          </Link>
-                        ))}
-                      </div>
+                <div key={member.id} className={clsx('card', styles.member)}>
+                  <img
+                    src={`https://api.mcheads.org/head/${member.id}/64`}
+                    alt={translate({id: 'staff.skinAlt', message: '{name} 마인크래프트 스킨'}, {name: member.name})}
+                    loading="lazy"
+                    width={56}
+                    height={56}
+                    className={styles.head}
+                  />
+                  <div className={styles.info}>
+                    <strong className={styles.name}>{member.name}</strong>
+                    {member.badge && (
+                      <span className={`badge badge--${member.badge[1]} margin-left--sm`}>
+                        {badges[member.badge[0]]}
+                      </span>
+                    )}
+                    <div className={styles.links}>
+                      {[
+                        {Icon: FaDiscord, href: `https://discord.com/users/${member.discord}`, title: 'Discord'},
+                        ...(member.links ?? []),
+                      ].map((link) => (
+                        <Link key={link.href} href={link.href} title={link.title}>
+                          <link.Icon />
+                        </Link>
+                      ))}
                     </div>
                   </div>
                 </div>
