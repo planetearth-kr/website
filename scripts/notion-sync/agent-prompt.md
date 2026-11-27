@@ -11,7 +11,7 @@
 1. **diff에 나온 변경만 반영한다.** 바뀌지 않은 문단은 표현, 순서, 서식을 포함해 건드리지 않는다. 노션과 docs의 문장이 원래 조금 달라도, diff에 없는 부분이면 그대로 둔다.
 2. **`scripts/notion-sync/style-guide.md`를 먼저 읽고 따른다.** 노션 문장을 그대로 붙이지 않는다. 문체 가이드에 맞게 다듬어서 넣는다. 단, 가이드의 "절대 바꾸지 않는 것"은 글자 그대로 옮긴다. 스냅샷의 heading 레벨은 노션 기준이니, docs 파일의 heading 구조에 맞춰서 넣는다.
    - 노션 페이지 하나가 docs 파일 여러 개에 나뉘어 들어가 있을 수 있다(매핑에서 같은 ID가 여러 경로에 연결됨). 바뀐 내용이 실제로 들어 있는 파일을 찾아서 고친다.
-3. **링크**: 스냅샷의 `notion:<id>` 링크는 매핑으로 docs 파일을 찾아, 그 파일 frontmatter의 `slug`로 바꾼다. docs에 없는 페이지면 링크 없이 텍스트만 쓴다.
+3. **링크**: 스냅샷의 `notion:<id>` 링크는 매핑으로 docs 파일을 찾아, `/docs` 뒤에 그 파일 frontmatter의 `slug`를 붙인 경로로 바꾼다(slug가 `/towny/basics`면 `/docs/towny/basics`, `/`면 `/docs`). docs에 없는 페이지면 링크 없이 텍스트만 쓴다.
 4. **이미지**: docs 이미지는 `static/img/docs/<문서 경로>/<alt>-NN.<확장자>`에 둔다. 예: `src/docs/life/fishing.mdx`의 이미지는 `static/img/docs/life/fishing/fishdex-01.webp`이고, 참조는 `/img/docs/life/fishing/fishdex-01.webp`다. `NN`은 같은 폴더에서 같은 alt끼리 붙이는 01부터의 번호다.
    - 새 이미지: 스냅샷의 `/img/notion/<파일>`은 `static/img/notion/`에 받아져 있다. 이 파일을 위 규칙의 경로로 `mv`로 옮기고(`mkdir -p`로 폴더를 먼저 만든다), docs에는 옮긴 경로를 쓴다. `/img/notion/` 경로를 docs에 남기지 않는다.
    - 빠진 이미지: 노션에서 이미지가 빠졌으면 docs의 같은 위치 이미지 참조를 지운다. 그 파일을 다른 docs가 쓰지 않으면 `git rm`으로 지운다.

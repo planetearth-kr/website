@@ -3,10 +3,12 @@ import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import notionSync from './notion-sync.json';
 
+const toDocs = (path: string) => `/docs${path}`.replace(/\/$/, '');
+
 const config: Config = {
   title: 'PlanetEarth',
   tagline: '마인크래프트 오픈월드 지구서버',
-  url: 'https://docs.planetearth.kr/',
+  url: 'https://planetearth.kr',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   favicon: 'img/favicon.ico',
@@ -21,7 +23,8 @@ const config: Config = {
 
   i18n: {
     defaultLocale: 'ko',
-    locales: ['ko'],
+    locales: ['ko', 'en', 'ja'],
+    localeConfigs: {ko: {label: 'KO'}, en: {label: 'EN'}, ja: {label: 'JA'}},
   },
 
   markdown: {
@@ -37,7 +40,7 @@ const config: Config = {
         docs: {
           sidebarPath: './sidebars.ts',
           path: 'src/docs',
-          routeBasePath: '/',
+          routeBasePath: 'docs',
         },
         blog: false,
         sitemap: {
@@ -59,12 +62,13 @@ const config: Config = {
       '@docusaurus/plugin-client-redirects',
       {
         // 목록은 notion-sync.json에서 관리한다.
-        redirects: Object.entries(notionSync.redirects).map(([from, to]) => ({from, to})),
+        redirects: Object.entries(notionSync.redirects).map(([from, to]) => ({from: toDocs(from), to: toDocs(to)})),
       },
     ],
   ],
 
   themeConfig: {
+    image: 'img/site/og-image.jpg',
     navbar: {
       logo: {
         alt: 'PlanetEarth',
@@ -77,8 +81,9 @@ const config: Config = {
           position: 'left',
           label: '가이드',
         },
+        {to: '/staff', label: '운영진', position: 'left'},
         {
-          href: 'https://planetearth.kr/map',
+          href: 'https://map.planetearth.kr',
           label: '웹 지도',
           position: 'left',
         },
@@ -87,11 +92,7 @@ const config: Config = {
           label: '디스코드',
           position: 'left',
         },
-        /* {
-          href: 'https://github.com/planetearth-kr',
-          label: 'GitHub',
-          position: 'right',
-        },*/
+        {type: 'localeDropdown', position: 'right', queryString: '?persistLocale=true'},
       ],
     },
     footer: {

@@ -9,8 +9,15 @@ Node.js 22+ 와 pnpm 이 필요합니다.
 
 ```bash
 pnpm install
-pnpm start
+pnpm start              # 한국어만 띄웁니다. 홈은 /, 가이드는 /docs
+pnpm start --locale en  # 영어(ja는 일본어) 확인
 ```
+
+## 구성
+
+- `src/pages`: 홈과 운영진 페이지
+- `src/docs`: 가이드(`/docs`)
+- `i18n/`: 홈과 운영진의 영어·일본어 문구. 가이드는 번역하지 않습니다.
 
 ## 빌드 및 검증
 

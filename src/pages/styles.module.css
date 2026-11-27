@@ -1,0 +1,34 @@
+.hero {
+  min-height: 70vh;
+  color: #fff;
+  background:
+    linear-gradient(rgb(0 0 0 / 0.4), transparent),
+    url('/img/site/background.webp') center / cover;
+}
+
+.staffHero {
+  min-height: 30vh;
+  background-position: center 25%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  gap: 1.5rem;
+}
+
+.stat {
+  display: block;
+  font-size: 3rem;
+  color: var(--ifm-color-primary);
+}
+
+.screenshot {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: var(--ifm-card-border-radius);
+}
+
+.head {
+  image-rendering: pixelated;
+}

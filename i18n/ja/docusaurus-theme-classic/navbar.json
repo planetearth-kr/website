@@ -1,0 +1,22 @@
+{
+  "logo.alt": {
+    "message": "PlanetEarth",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.가이드": {
+    "message": "ガイド",
+    "description": "Navbar item with label 가이드"
+  },
+  "item.label.운영진": {
+    "message": "運営陣",
+    "description": "Navbar item with label 운영진"
+  },
+  "item.label.웹 지도": {
+    "message": "マップ",
+    "description": "Navbar item with label 웹 지도"
+  },
+  "item.label.디스코드": {
+    "message": "Discord",
+    "description": "Navbar item with label 디스코드"
+  }
+}

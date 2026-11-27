@@ -1,0 +1,50 @@
+{
+  "home.announcement": {
+    "message": "🎉 PlanetEarth 4周年！いつもありがとうございます"
+  },
+  "home.title": {
+    "message": "ゲームの中の、もう一つの地球"
+  },
+  "home.subtitle": {
+    "message": "オープンワールド タウニー 地球サーバー PlanetEarth"
+  },
+  "home.copied": {
+    "message": "サーバーアドレスをコピーしました"
+  },
+  "home.screenshotAlt": {
+    "message": "ゲーム内スクリーンショット {number}"
+  },
+  "home.stats.totalPlayers": {
+    "message": "累計プレイヤー"
+  },
+  "home.stats.discordMembers": {
+    "message": "Discordメンバー"
+  },
+  "home.stats.peakPlayers": {
+    "message": "最高同時接続"
+  },
+  "home.stats.towns": {
+    "message": "町数"
+  },
+  "meta.description": {
+    "message": "オープンワールド タウニー 地球サーバー PlanetEarth"
+  },
+  "staff.title": {
+    "message": "スタッフ紹介"
+  },
+  "staff.subtitle": {
+    "message": "PlanetEarthを一緒に作り上げる人々"
+  },
+  "staff.skinAlt": {
+    "message": "{name} マインクラフトスキン"
+  },
+  "badges.manager": {
+    "message": "総括"
+  },
+  "badges.backendDev": {
+    "message": "バックエンド開発"
+  },
+  "badges.inactive": {
+    "message": "活動休止"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "home.announcement": {
+    "message": "🎉 PlanetEarth turns 4! Thank you for being with us"
+  },
+  "home.title": {
+    "message": "Another Earth, In Your Game"
+  },
+  "home.subtitle": {
+    "message": "Open World Towny Earth Server — PlanetEarth"
+  },
+  "home.copied": {
+    "message": "Server address copied"
+  },
+  "home.screenshotAlt": {
+    "message": "In-game screenshot {number}"
+  },
+  "home.stats.totalPlayers": {
+    "message": "Total Players"
+  },
+  "home.stats.discordMembers": {
+    "message": "Discord Members"
+  },
+  "home.stats.peakPlayers": {
+    "message": "Peak Players"
+  },
+  "home.stats.towns": {
+    "message": "Towns"
+  },
+  "meta.description": {
+    "message": "Open World Towny Earth Server — PlanetEarth"
+  },
+  "staff.title": {
+    "message": "Meet the Staff"
+  },
+  "staff.subtitle": {
+    "message": "The people who build PlanetEarth together"
+  },
+  "staff.skinAlt": {
+    "message": "{name} Minecraft Skin"
+  },
+  "badges.manager": {
+    "message": "Manager"
+  },
+  "badges.backendDev": {
+    "message": "Backend Dev"
+  },
+  "badges.inactive": {
+    "message": "Inactive"
+  }
+}
