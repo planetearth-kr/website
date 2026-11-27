@@ -24,7 +24,7 @@ pnpm build && npx wrangler pages dev build
 - `src/pages`: 홈과 운영진 페이지
 - `src/docs`: 가이드(`/docs`)
 - `i18n/`: 홈과 운영진의 영어·일본어 문구. 가이드는 번역하지 않습니다.
-- `functions/`: Cloudflare Pages 미들웨어(언어 자동 이동, `/map` 같은 짧은 주소)
+- `functions/`: Cloudflare Pages 미들웨어(언어 자동 이동, `/map` 같은 짧은 주소, 옛 `docs.planetearth.kr` 주소)
 
 ## 빌드 및 검증
 

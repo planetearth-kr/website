@@ -18,9 +18,12 @@ function preferredLocale(cookieHeader, acceptLanguage) {
     .reduce((best, l) => (l.q > best.q ? l : best), {lang: 'ko', q: 0}).lang;
 }
 
-export function decide({pathname: rawPathname, search, cookieHeader, acceptLanguage}) {
+export function decide({host, pathname: rawPathname, search, cookieHeader, acceptLanguage}) {
   // '//host'는 Location에서 다른 사이트 주소가 된다.
   const pathname = rawPathname.replace(/\/{2,}/g, '/');
+  if (host === 'docs.planetearth.kr')
+    return {status: 301, location: `https://planetearth.kr/docs${pathname}`.replace(/\/$/, '') + search};
+
   const short = pathname.match(/^\/(map|discord|guide|schedule)(\/|$)/);
   if (short) return {status: 302, location: external[short[1]]};
 
@@ -48,6 +51,7 @@ export async function onRequest(context) {
   const {request} = context;
   const url = new URL(request.url);
   const result = decide({
+    host: url.hostname,
     pathname: url.pathname,
     search: url.search,
     cookieHeader: request.headers.get('Cookie') ?? '',

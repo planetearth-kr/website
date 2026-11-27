@@ -2,8 +2,19 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {decide} from './_middleware.mjs';
 
-const req = (pathname, {search = '', cookie = '', lang = ''} = {}) =>
-  decide({pathname, search, cookieHeader: cookie, acceptLanguage: lang});
+const req = (pathname, {search = '', cookie = '', lang = '', host = 'planetearth.kr'} = {}) =>
+  decide({host, pathname, search, cookieHeader: cookie, acceptLanguage: lang});
+
+test('옛 docs 도메인은 /docs로 보낸다', () => {
+  const host = 'docs.planetearth.kr';
+  assert.deepEqual(req('/', {host, lang: 'en'}), {status: 301, location: 'https://planetearth.kr/docs'});
+  assert.deepEqual(req('/towny/basics/', {host, search: '?a=1'}), {
+    status: 301,
+    location: 'https://planetearth.kr/docs/towny/basics?a=1',
+  });
+  assert.equal(req('/map', {host}).location, 'https://planetearth.kr/docs/map');
+  assert.equal(req('//evil.com', {host}).location, 'https://planetearth.kr/docs/evil.com');
+});
 
 test('외부 짧은 주소', () => {
   assert.deepEqual(req('/map'), {status: 302, location: 'https://map.planetearth.kr'});
